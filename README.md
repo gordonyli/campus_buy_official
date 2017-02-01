@@ -1,6 +1,6 @@
 # campus_buy_official
 
-******************************************SETUP******************************************
+******************************************SETUP*******************************************
 
 1. Download heroku client from the heroku website (https://devcenter.heroku.com/articles/heroku-cli#download-and-install)
 2. Make a heroku account 
@@ -28,12 +28,12 @@
 3. create user
 4. run heroku config:set MONGODB_URI='mongodb://adv:adv@ds033259.mlab.com:33259/campus_buy' in terminal
 
-**********************************MIDDLEWARE CONNECTION**********************************
+**********************************MIDDLEWARE CONNECTION***********************************
 
 1. create a server.js file 
 
 
-***************************************RESTFUL API***************************************
+***************************************RESTFUL API****************************************
 
 1. create a routes folder 
 2. post, get delete, put command
