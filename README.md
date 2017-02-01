@@ -14,7 +14,7 @@
 4. heroku ps:scale web=1 
 5. heroku open (opens by the URL we give it)
 
-*************************************CREATING NEW APP**************************************
+*************************************CREATING NEW APP***************************************
 
 1. git init
 2. heroku create
