@@ -1,0 +1,31 @@
+{
+  "name": "MEAN",
+  "version": "1.0.0",
+  "description": "Campus Buy - Buy Smart, Buy Safe",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chrisckchang/mean-contactlist.git"
+  },
+  "keywords": [
+    "MEAN",
+    "Express",
+    "Angular"
+  ],
+  "author": "Team Tabs, 192",
+  "license": "GT",
+  "bugs": {
+    "url": "https://github.com/gordonyli/campus_buy_official/issues"
+  },
+  "homepage": "https://github.com/gordonyli/campus_buy_official",
+  "dependencies": {
+    "body-parser": "^1.13.3",
+    "cas-authentication": "0.0.8",
+    "express": "^4.13.3",
+    "mongodb": "^2.0.43"
+  }
+}
