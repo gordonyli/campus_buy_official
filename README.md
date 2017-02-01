@@ -1,6 +1,6 @@
 # campus_buy_official
 
-******************************************SETUP*******************************************
+******************************************SETUP**********************************************
 
 1. Download heroku client from the heroku website (https://devcenter.heroku.com/articles/heroku-cli#download-and-install)
 2. Make a heroku account 
