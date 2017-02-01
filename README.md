@@ -21,7 +21,7 @@
 3. create package.json
 4. npm install (all this does is download all dependencies such as express)
 
-*************************************MONGODB and MLAB*************************************
+*************************************MONGODB and MLAB****************************************
 
 1. create mlab account
 2. create database
