@@ -36,5 +36,5 @@
 ***************************************RESTFUL API*********************************************
 
 1. create a routes folder 
-2. post, get delete, put command
+2. commands include post, get, delete, and put
 3. git push heroku master 
