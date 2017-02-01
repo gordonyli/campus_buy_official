@@ -4,29 +4,23 @@ var bodyParser = require("body-parser");
 var mongodb = require("mongodb");
 var ObjectID = mongodb.ObjectID;
 
-var CONTACTS_COLLECTION = "contacts";
 
 var app = express();
 app.use(express.static(__dirname + "/public")); //url looks into public folder
 app.use(bodyParser.json());
 
-// Create a database variable outside of the database connection callback to reuse the connection pool in your app.
-var db;
+//View Engine
+app.set('views', path.join(__dirname, '/public/views'));
+app.set('view engine', 'ejs');
+app.engine('html', require('ejs').renderFile);
 
-// Connect to the database before starting the application server.
-mongodb.MongoClient.connect(process.env.MONGODB_URI, function (err, database) {
-    if (err) {
-        console.log(err);
-        process.exit(1);
-    }
+var index = require("./routes/index");
+var contacts = require("./routes/contacts");
 
-    // Save database object from the callback for reuse.
-    db = database;
-    console.log("Database connection ready");
-
-    // Initialize the app.
-    var server = app.listen(process.env.PORT || 8080, function () {
-        var port = server.address().port;
-        console.log("App now running on port", port);
-    });
+var server = app.listen(process.env.PORT || 8080, function () {
+    var port = server.address().port;
+    console.log("App now running on port", port);
 });
+
+app.use("/", index);
+app.use("/api", contacts);

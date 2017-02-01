@@ -3,6 +3,9 @@
  */
 var express = require('express');
 var router = express.Router();
+var mongodb = require("mongodb");
+var CONTACTS_COLLECTION = "contacts";
+var ObjectID = mongodb.ObjectID;
 
 // CONTACTS API ROUTES BELOW
 
@@ -27,13 +30,21 @@ mongodb.MongoClient.connect(process.env.MONGODB_URI, function (err, database) {
 });
 
 
+// CONTACTS API ROUTES BELOW
+
+// Generic error handler used by all endpoints.
+function handleError(res, reason, message, code) {
+    console.log("ERROR: " + reason);
+    res.status(code || 500).json({"error": message});
+}
+
 /*  "/contacts"
  *    GET: finds all contacts
  *    POST: creates a new contact
  */
 
 //CONTACTS/USERS
-app.get("/contacts", function(req, res) {
+router.get("/contacts",  function(req, res) {
     db.collection(CONTACTS_COLLECTION).find({}).toArray(function(err, docs) {
         if (err) {
             handleError(res, err.message, "Failed to get contacts.");
@@ -43,7 +54,7 @@ app.get("/contacts", function(req, res) {
     });
 });
 
-app.post("/contacts", function(req, res) {
+router.post("/contacts",  function(req, res) {
     var newContact = req.body;
     newContact.createDate = new Date();
 
@@ -65,10 +76,11 @@ app.post("/contacts", function(req, res) {
  *    PUT: update contact by id
  *    DELETE: deletes contact by id
  */
-
-app.get("/contacts/:id", function(req, res) {
+router.get("/contact/:id",  function(req, res) {
+    console.log("hello");
     db.collection(CONTACTS_COLLECTION).findOne({ _id: new ObjectID(req.params.id) }, function(err, doc) {
         if (err) {
+            console.log("hello");
             handleError(res, err.message, "Failed to get contact");
         } else {
             res.status(200).json(doc);
@@ -76,10 +88,10 @@ app.get("/contacts/:id", function(req, res) {
     });
 });
 
-app.put("/contacts/:id", function(req, res) {
+router.put("/contacts/:id",  function(req, res) {
     var updateDoc = req.body;
     delete updateDoc._id;
-
+    console.log(req.data);
     db.collection(CONTACTS_COLLECTION).updateOne({_id: new ObjectID(req.params.id)}, updateDoc, function(err, doc) {
         if (err) {
             handleError(res, err.message, "Failed to update contact");
@@ -89,7 +101,7 @@ app.put("/contacts/:id", function(req, res) {
     });
 });
 
-app.delete("/contacts/:id", function(req, res) {
+router.delete("/contacts/:id",  function(req, res) {
     db.collection(CONTACTS_COLLECTION).deleteOne({_id: new ObjectID(req.params.id)}, function(err, result) {
         if (err) {
             handleError(res, err.message, "Failed to delete contact");
@@ -98,3 +110,5 @@ app.delete("/contacts/:id", function(req, res) {
         }
     });
 });
+
+module.exports = router;
