@@ -1,4 +1,5 @@
 # campus_buy_official
+heroku git:clone -a evening-escarpment-98449
 
 ******************************************SETUP***********************************************
 
@@ -38,3 +39,8 @@
 1. create a routes folder 
 2. commands include post, get, delete, and put
 3. git push heroku master 
+
+***************************************RUN LOCALLY*********************************************
+
+1. run heroku config:get MONGODB_URI -s >> .env
+2. run heroku local

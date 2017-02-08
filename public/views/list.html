@@ -1,26 +1,63 @@
-<div class = "row">
-  <div class="col-md-6">
-    <h2>
-      Campus Buy!
-    </h2>
-  </div>
-  <div class="col-md-3">
-  </div>
-  <div class="col-md-2">
-    <a style="margin-top:20px" class="btn btn-default" href="#/new/contact">Register</a>
-    <a style="margin-top:20px" class="btn btn-default" href="#/login">Login</a>
-  </div>
-  <div class="col-md-1">
-  </div>
-</div>
-<div class="container">
-  <table class="table table-hover">
-    <tbody>
-      <tr ng-repeat="contact in contacts | orderBy:'lastName'" style="cursor:pointer">
-        <td>
-          <a ng-href="#/contacts/{{contact._id}}">{{ contact.firstName }} {{ contact.lastName }}</a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<!DOCTYPE html>
+<html lang="en" ng-app="phonecatApp">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <!-- Angular lib -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-route.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <!-- Create some padding for body -->
+    <style>
+      body {
+        min-height: 2000px;
+        padding-top: 70px;
+      }
+    </style>
+    <script src="../js/contactsApp.js"></script>
+
+  </head>
+
+  <body ng-controller="PhoneListController">
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <div class="navbar-brand" href="#/">Campus Buy</div>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#/">Home</a></li>
+            <li class="active"><a href="#/Products">Products</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- Dynamically render templates -->
+    {{test}}
+    <div class="container">
+      <table class="table table-hover">
+        <tbody>
+        <tr ng-repeat="contact in contacts | orderBy:'lastName'" style="cursor:pointer">
+          <td>
+            <a ng-href="#/contacts/{{contact._id}}">{{ contact.firstName }} {{ contact.lastName }}</a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <ul>
+      <li ng-repeat="phone in phones">
+        <span>{{phone.name}}</span>
+        <p>{{phone.snippet}}</p>
+      </li>
+    </ul>
+  </body>
+
