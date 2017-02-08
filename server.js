@@ -16,6 +16,7 @@ app.engine('html', require('ejs').renderFile);
 
 var index = require("./routes/index");
 var contacts = require("./routes/contacts");
+var products = require("./routes/products");
 
 var server = app.listen(process.env.PORT || 8080, function () {
     var port = server.address().port;
@@ -24,3 +25,4 @@ var server = app.listen(process.env.PORT || 8080, function () {
 
 app.use("/", index);
 app.use("/api", contacts);
+app.use("/api", products);

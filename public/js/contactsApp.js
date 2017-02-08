@@ -1,31 +1,4 @@
-angular.module("contactsApp", ['ngRoute'])
-    .config(function($routeProvider) {
-        $routeProvider
-            .when("/", {
-                templateUrl: "../views/list.html",
-                controller: "ListController",
-                resolve: {
-                    contacts: function(Contacts) {
-                        return Contacts.getContacts();
-                    }
-                }
-            })
-            .when("/new/contact", {
-                controller: "NewContactController",
-                templateUrl: "../views/contact-form.html"
-            })
-            .when("/contacts/:contactId", {
-                controller: "EditContactController",
-                templateUrl: "../views/contact.html"
-            })
-            .when("/login", {
-                controller: "NewContactController",
-                templateUrl: "../views/login.html"
-            })
-            .otherwise({
-                redirectTo: "/"
-            })
-    })
+angular.module("mainApp.contactsApp", ['ngRoute'])
     .service("Contacts", function($http) {
         this.getContacts = function() {
             return $http.get("/api/contacts").
