@@ -19,9 +19,29 @@ angular.module("mainApp.sellApp", ['ngRoute'])
             console.log(product);
             Products.createProduct(product).then(function(doc) {
                 console.log(doc);
-                $location.path("#/");
+                var productUrl = "/products/" + doc.data._id;
+                $location.path(productUrl);
             }, function(response) {
                 alert(response);
             });
         }
     });
+
+    // this.createContact = function(contact) {
+    //         return $http.post("/api/contacts", contact).
+    //         then(function(response) {
+    //             return response;
+    //         }, function(response) {
+    //             alert("Error creating contact.");
+    //         });
+    //     }
+    // $scope.saveContact = function(contact) {
+    //         console.log(contact);
+    //         Contacts.createContact(contact).then(function(doc) {
+    //             console.log(doc);
+    //             var contactUrl = "/contacts/" + doc.data._id;
+    //             $location.path(contactUrl);
+    //         }, function(response) {
+    //             alert(response);
+    //         });
+    //     }

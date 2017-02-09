@@ -1,5 +1,5 @@
 <html lang="en" ng-app="mainApp.sellApp">
-<div class="row" ng-hide="sell._id">
+<div class="row" ng-hide="product._id">
   <div class="col-md-6">
       <h2>Selling Items for CAMPUS BUY</h2>
   </div>
@@ -8,12 +8,12 @@
   <div>
     <p>
       <label>Item Name</label> 
-      <input id="name" class="form-control" type="text" ng-model="sell.itemName" placeholder="Required" required>
+      <input id="name" class="form-control" type="text" ng-model="product.itemName" placeholder="Required" required>
       <span ng-hide="name.length">Please type item name</span>
     </p>
     <p>
       <label>Item Type</label> 
-      <select id = "type" class="form-control" type="text" ng-model="sell.itemType" placeholder="Required" required>
+      <select id = "type" class="form-control" type="text" ng-model="product.itemType" placeholder="Required" required>
         <optgroup label="Clothing / Shoes">
           <option value="clothing_men">Men</option>
           <option value="clothing_women">Women</option>
@@ -47,11 +47,11 @@
     </p>
     <p>
       <label>Price</label> 
-      <input id="price" class="form-control" type="number" min="0" pattern="[0-9]{6}" ng-model="sell.itemPrice" placeholder="Required in USD" required> 
+      <input id="price" class="form-control" type="number" min="0" pattern="[0-9]{6}" ng-model="product.itemPrice" placeholder="Required in USD" required> 
     </p>
     <p>
       <label>Condition</label>
-      <select id = "condition" class="form-control" type="text" ng-model="sell.itemCondition" placeholder="Required" required>
+      <select id = "condition" class="form-control" type="text" ng-model="product.itemCondition" placeholder="Required" required>
         <option value="condition_10">10(New)</option>
         <option value="condition_9">9</option>
         <option value="condition_8">8</option>
