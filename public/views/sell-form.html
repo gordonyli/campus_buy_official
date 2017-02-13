@@ -1,0 +1,84 @@
+
+<html lang="en" ng-app="mainApp.sellApp">
+<div class="row" ng-hide="product._id">
+  <div class="col-md-6">
+      <h2>Selling Items for CAMPUS BUY</h2>
+  </div>
+</div>
+<div class="container">
+  <div>
+    <p>
+      <label>Item Name</label> 
+      <input id="name" class="form-control" type="text" ng-model="product.itemName" placeholder="Required" ng-Minlength = "5" required>
+      <span ng-hide="name.length">Please type item name</span>
+    </p>
+    <p>
+      <label>Item Type</label> 
+      <select id = "type" class="form-control" type="text" ng-model="product.itemType" placeholder="Required" required>
+        <option value="">---Select---</option>
+        <optgroup label="Clothing / Shoes">
+          <option value="clothing_men">Men</option>
+          <option value="clothing_women">Women</option>
+        </optgroup>
+
+        <optgroup label="School Stuff">
+          <option value="school_text">Textbooks</option>
+          <option value="school_cal">Calculators</option>
+        </optgroup>
+
+        <optgroup label="Electronics">
+          <option value="elec_tv">TV</option>
+          <option value="elec_speaker">Speakers</option>
+          <option value="elec_phone">Phones</option>
+        </optgroup>
+        <optgroup value="computers" label="Computers">
+          <option value="elec_comp_lap">Laptops</option>
+          <option value="elec_comp_tab">Tablets</option>
+          <option value="elec_comp_desk">Desktops</option>
+          <option value="elec_comp_monitor">Monitors</option>
+          <option value="elec_comp_acc">Accessories</option>
+          <option value="elec_comp_comp">Components</option>
+        </optgroup>
+
+        <option value="car">Car / Motorcycle</option>
+        <option value="bicycle">Bicycle / Skateboard</option>
+        <option value="home">Home / Furniture</option>
+        <option value="sports">Sports / Outdoors</option>
+
+      </select>
+    </p>
+    <p>
+      <label>Price</label> 
+      <input id="price" class="form-control" type="text" name="number" only-digits step="0.01" ng-model="product.itemPrice" placeholder="Required in USD" required> 
+    </p>
+    <p>
+      <label>Condition</label>
+      <select id = "condition" class="form-control" type="text" ng-model="product.itemCondition" placeholder="Required" required>
+        <option value="">---Select---</option>
+        <option value="condition_10">10(New)</option>
+        <option value="condition_9">9</option>
+        <option value="condition_8">8</option>
+        <option value="condition_7">7</option>
+        <option value="condition_6">6</option>
+        <option value="condition_5">5</option>
+        <option value="condition_4">4</option>
+        <option value="condition_3">3</option>
+        <option value="condition_2">2</option>
+        <option value="condition_1">1(Trash)</option>
+      </select>
+    </p>
+    <p>
+      <label>Preferred Contact</label>
+      <select id = "prefer_contact" class="form-control" type="text" ng-model="product.contact" placeholder="Required" required>
+        <option value="">---Select---</option>
+        <option value="contact_call">Phone Call</option>
+        <option value="contact_message">Phone Message</option>
+        <option value="contact_fb">Facebook Message</option>
+      </select>
+    </p>
+      <button style="margin-top:20px" class="btn btn-default" ng-click="saveProduct(product)">Save</button>
+      <button style="margin-top:20px" class="btn btn-default" ng-click="back()">Back</button>
+    </p>
+  </div>
+</div>
+</html>

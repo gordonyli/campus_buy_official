@@ -30,7 +30,7 @@ mongodb.MongoClient.connect(process.env.MONGODB_URI, function (err, database) {
 });
 
 
-// CONTACTS API ROUTES BELOW
+// PRODUCTS API ROUTES BELOW
 
 // Generic error handler used by all endpoints.
 function handleError(res, reason, message, code) {
@@ -38,7 +38,7 @@ function handleError(res, reason, message, code) {
     res.status(code || 500).json({"error": message});
 }
 
-//products
+//products get request
 router.get("/products",  function(req, res) {
     db.collection(PRODUCTS_COLLECTION).find({}).toArray(function(err, docs) {
         if (err) {
@@ -49,4 +49,15 @@ router.get("/products",  function(req, res) {
     });
 });
 
+router.post("/new/products",  function(req, res) {
+    var newProduct = req.body;
+    newProduct.createDate = new Date();
+    db.collection(PRODUCTS_COLLECTION).insertOne(newProduct, function(err, doc) {
+        if (err) {
+            handleError(res, err.message, "Failed to create new product.");
+        } else {
+            res.status(201).json(doc.ops[0]);
+        }
+    });
+});
 module.exports = router;
