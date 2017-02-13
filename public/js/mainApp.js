@@ -1,5 +1,5 @@
 //where all routing happens
-angular.module("mainApp", ['ngRoute', 'mainApp.contactsApp',, 'mainApp.sellApp','mainApp.productsApp'])
+angular.module("mainApp", ['ngRoute', 'mainApp.contactsApp','mainApp.productsApp'])
     .config(function($routeProvider) {
         $routeProvider
             .when("/", {
