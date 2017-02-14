@@ -17,7 +17,7 @@ angular.module("mainApp.productsApp", ['ngRoute'])
             });
         }
     })
-    .controller("ProductsListController", function(products, $scope) {
+    .controller("ProductsListController", function(products, $scope, $filter) {
         console.log(products.data);
         $scope.products = products.data;
     })

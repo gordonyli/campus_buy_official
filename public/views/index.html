@@ -15,6 +15,9 @@
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <!-- Create some padding for body -->
+    <link href="../css/index.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
     <style>
       body {
         min-height: 2000px;
@@ -27,20 +30,51 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
+    <!--<nav class="navbar navbar-default navbar-fixed-top">-->
+      <!--<div class="container">-->
+        <!--<div class="navbar-header">-->
+          <!--<div class="navbar-brand" href="#/">Campus Buy</div>-->
+        <!--</div>-->
+        <!--<div id="navbar" class="navbar-collapse collapse">-->
+          <!--<ul class="nav navbar-nav">-->
+            <!--<li class="active"><a href="#/">Home</a></li>-->
+            <!--<li class="active"><a href="#/products">Products</a></li>-->
+            <!--<li class="active"><a href="#/sell">Sell</a></li>-->
+          <!--</ul>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</nav>-->
+
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid">
         <div class="navbar-header">
-          <div class="navbar-brand" href="#/">Campus Buy</div>
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+          </button>
+          <a class="navbar-brand page-scroll" href="#/">CampusBuy</a>
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#/">Home</a></li>
-            <li class="active"><a href="#/products">Products</a></li>
-            <li class="active"><a href="#/sell">Sell</a></li>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <a class="page-scroll" href="profile.html">My Profile</a>
+            </li>
+            <li>
+              <a class="page-scroll" href="#/sell">Sell an Item</a>
+            </li>
+            <li>
+              <a class="page-scroll" href="#/products">Products</a>
+            </li>
+            <li>
+              <a class="page-scroll" href="mymarket.html">My Market</a>
+            </li>
+            <li>
+              <a class="page-scroll" href="prelogin_home.html">Log Out</a>
+            </li>
           </ul>
         </div>
       </div>
     </nav>
+
     <!-- Dynamically render templates -->
     <div class="container" ng-view>
     </div>
