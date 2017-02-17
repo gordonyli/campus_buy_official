@@ -22,7 +22,7 @@ angular.module("mainApp.sellApp", ['ngRoute'])
                 var productUrl = "/products/" + doc.data._id;
                 $location.path(productUrl);
             }, function(response) {
-                alert(response);
+                alert("Error");
             });
         }
     })
@@ -39,13 +39,15 @@ angular.module("mainApp.sellApp", ['ngRoute'])
                   digits = digits.substring(0, digits.length - 1);
                 }
                 if (digits.split('.')[1].length > 2) {
-                    digits = digits.substring(0, digits.length -1);
+                  digits = digits.substring(0, digits.length - 1);
                 }
+                
 
                 if (digits !== val) {
                   ctrl.$setViewValue(digits);
                   ctrl.$render();
                 }
+
                 return parseFloat(digits);
               }
               return undefined;
@@ -54,22 +56,3 @@ angular.module("mainApp.sellApp", ['ngRoute'])
           }
         }
     });
-
-    // this.createContact = function(contact) {
-    //         return $http.post("/api/contacts", contact).
-    //         then(function(response) {
-    //             return response;
-    //         }, function(response) {
-    //             alert("Error creating contact.");
-    //         });
-    //     }
-    // $scope.saveContact = function(contact) {
-    //         console.log(contact);
-    //         Contacts.createContact(contact).then(function(doc) {
-    //             console.log(doc);
-    //             var contactUrl = "/contacts/" + doc.data._id;
-    //             $location.path(contactUrl);
-    //         }, function(response) {
-    //             alert(response);
-    //         });
-    //     }

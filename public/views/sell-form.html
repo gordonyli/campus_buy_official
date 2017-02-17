@@ -8,62 +8,86 @@
   <div>
     <p>
       <label>Item Name</label> 
-      <input id="name" class="form-control" type="text" ng-model="product.itemName" placeholder="Required" ng-Minlength = "5" required>
-      <span ng-hide="name.length">Please type item name</span>
+      <input id="name" class="form-control" type="text" ng-model="product.itemName" placeholder="Required" ng-Minlength = "5" width="10" required>
+      <span ng-show="myform.myfield.$error.required">Please enter something!</span>
     </p>
     <p>
       <label>Item Type</label> 
       <select id = "type" class="form-control" type="text" ng-model="product.itemType" placeholder="Required" required>
         <option value="">---Select---</option>
         <optgroup label="Clothing / Shoes">
-          <option value="clothing_men">Men</option>
-          <option value="clothing_women">Women</option>
+          <option value="clothing_men_clothing">Men's Clothing</option>
+          <option value="clothing_men_shoes">Men's Shoes</option>
+          <option value="clothing_women_clothing">Women's Clothing</option>
+          <option value="clothing_women_shoes">Women's Shoes</option>
         </optgroup>
 
-        <optgroup label="School Stuff">
+        <optgroup label="School">
           <option value="school_text">Textbooks</option>
-          <option value="school_cal">Calculators</option>
+          <option value="school_cal">Calculators / Clickers</option>
         </optgroup>
 
         <optgroup label="Electronics">
-          <option value="elec_tv">TV</option>
-          <option value="elec_speaker">Speakers</option>
-          <option value="elec_phone">Phones</option>
-        </optgroup>
-        <optgroup value="computers" label="Computers">
-          <option value="elec_comp_lap">Laptops</option>
-          <option value="elec_comp_tab">Tablets</option>
-          <option value="elec_comp_desk">Desktops</option>
-          <option value="elec_comp_monitor">Monitors</option>
-          <option value="elec_comp_acc">Accessories</option>
-          <option value="elec_comp_comp">Components</option>
+          <option value="elec_cell">Cell Phones / Accessories</option>
+          <option value="elec_camera">Cameras / Photo</option>
+          <option value="elec_comp">Computers / Tablets</option>
+          <option value="elec_tv">TV / Home Theater</option>
+          <option value="elec_game">Video Games / Consoles</option>
         </optgroup>
 
-        <option value="car">Car / Motorcycle</option>
-        <option value="bicycle">Bicycle / Skateboard</option>
-        <option value="home">Home / Furniture</option>
-        <option value="sports">Sports / Outdoors</option>
+        <optgroup label="Motors">
+          <option value="motor_car">Cars / Trucks</option>
+          <option value="motor_motorcycle">Motorcycles</option>
+          <option value="motor_part">Parts / Accessories</option>
+        </optgroup>
 
+        <optgroup label="Home / Garden">
+          <option value="home_furniture">Furnitures</option>
+          <option value="home_kitchen">Kitchen / Dining</option>
+          <option value="home_housekeeping">Housekeeping / Organization</option>
+          <option value="home_baby">Baby</option>
+        </optgroup>
+
+        <optgroup label="Sporting Goods">
+          <option value="sport_cycle">Bicycle / Skateboard</option>
+          <option value="sport_hunt">Hunting</option>
+          <option value="sport_fishing">Fishing</option>
+          <option value="sport_golf">Golf</option>
+          <option value="sport_team">Team sports</option>
+          <option value="sport_fitness">Fitness / Running</option>
+        </optgroup>
+
+        <optgroup label="Toy">
+          <option value="toy_figure">Action Figures</option>
+          <option value="toy_board">Board Games</option>
+          <option value="toy_drone">Drones</option>
+          <option value="toy_rc">RC</option>
+          <option value="toy_lego">LEGO</option>
+        </optgroup>
+
+        <optgroup label="Music">
+          <option value="music_guitar">Guitars</option>
+          <option value="music_record">Records / CDs</option>
+          <option value="music_ochestra">Ochestra / Band</option>
+          <option value="music_ticket">Concert Tickets</option>
+          <option value="music_drum">Drums</option>
+          <option value="music_dj">DJ</option>
+          <option value="music_audio">Audio</option>
+        </optgroup>
       </select>
     </p>
     <p>
       <label>Price</label> 
-      <input id="price" class="form-control" type="text" name="number" only-digits step="0.01" ng-model="product.itemPrice" placeholder="Required in USD" required> 
+      <input id="price" class="form-control" type="text" name="number" only-digits two-decimals step="0.01" ng-model="product.itemPrice" placeholder="Required in USD" required> 
     </p>
     <p>
       <label>Condition</label>
       <select id = "condition" class="form-control" type="text" ng-model="product.itemCondition" placeholder="Required" required>
         <option value="">---Select---</option>
-        <option value="condition_10">10(New)</option>
-        <option value="condition_9">9</option>
-        <option value="condition_8">8</option>
-        <option value="condition_7">7</option>
-        <option value="condition_6">6</option>
-        <option value="condition_5">5</option>
-        <option value="condition_4">4</option>
-        <option value="condition_3">3</option>
-        <option value="condition_2">2</option>
-        <option value="condition_1">1(Trash)</option>
+        <option value="condition_new">New</option>
+        <option value="condition_good">Good</option>
+        <option value="condition_okay">Okay</option>
+        <option value="condition_bad">Bad</option>
       </select>
     </p>
     <p>
@@ -75,6 +99,12 @@
         <option value="contact_fb">Facebook Message</option>
       </select>
     </p>
+    <p>
+      <label>Description</label>
+      <textarea id="description" class="form-control" type="text" ng-model="product.description" required>
+      </textarea>
+    </p>
+    <p>
       <button style="margin-top:20px" class="btn btn-default" ng-click="saveProduct(product)">Save</button>
       <button style="margin-top:20px" class="btn btn-default" ng-click="back()">Back</button>
     </p>
