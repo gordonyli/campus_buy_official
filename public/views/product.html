@@ -1,0 +1,30 @@
+<div class = "row">
+  <div class="col-md-6">
+    <h2>
+      Products
+    </h2>
+  </div>
+  <div class="col-md-3">
+  </div>
+  <div class="col-md-2">
+    <a style="margin-top:20px" class="btn btn-default" href="#/new/product">Sell</a>
+  </div>
+  <div class="col-md-1">
+  </div>
+</div>
+<div class="container">
+  <table class="table table-hover">
+    <tbody>
+      <tr>
+        <th>Item</th>
+        <th>Type</th>
+        <th>Price</th>
+      </tr>
+      <tr ng-repeat="product in products | orderBy:'item'" style="cursor:pointer">
+        <td><a ng-href="#/Products/product/{{product._id}}">{{product.item}}</a></td>
+        <td>{{product.type}}</td>
+        <td>{{product.price}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

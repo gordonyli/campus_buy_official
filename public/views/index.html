@@ -17,8 +17,48 @@
     <!-- Create some padding for body -->
     <style>
       body {
-        min-height: 2000px;
+        min-height: 800px;
         padding-top: 70px;
+      }
+      .dropdown.dropdown-lg .dropdown-menu {
+          margin-top: -1px;
+          padding: 6px 20px;
+      }
+      .input-group-btn .btn-group {
+          display: flex !important;
+      }
+      .btn-group .btn {
+          border-radius: 0;
+          margin-left: -1px;
+      }
+      .btn-group .btn:last-child {
+          border-top-right-radius: 4px;
+          border-bottom-right-radius: 4px;
+      }
+      .btn-group .form-horizontal .btn[type="submit"] {
+        border-top-left-radius: 4px;
+        border-bottom-left-radius: 4px;
+      }
+      .form-horizontal .form-group {
+          margin-left: 0;
+          margin-right: 0;
+      }
+      .form-group .form-control:last-child {
+          border-top-left-radius: 4px;
+          border-bottom-left-radius: 4px;
+      }
+
+      @media screen and (min-width: 768px) {
+          #adv-search {
+              width: 800px;
+              margin: 0 auto;
+          }
+          .dropdown.dropdown-lg {
+              position: static !important;
+          }
+          .dropdown.dropdown-lg .dropdown-menu {
+              min-width: 500px;
+          }
       }
     </style>
     <script src="../js/mainApp.js"></script>
@@ -28,7 +68,7 @@
 
   <body>
     <nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
+      <div class="container-fluid">
         <div class="navbar-header">
           <div class="navbar-brand" href="#/">Campus Buy</div>
         </div>
@@ -37,6 +77,46 @@
             <li class="active"><a href="#/">Home</a></li>
             <li class="active"><a href="#/products">Products</a></li>
             <li class="active"><a href="#/sell">Sell</a></li>
+          </ul>
+          <ul class = "nav navbar-nav navbar-default">
+              <div class="input-group" id="adv-search">
+                  <input style="height:50px;font-size:14pt;" type="text" class="form-control" placeholder="Search"/>
+                    <div class="input-group-btn">
+                        <div class="btn-group" role="group">
+                            <div class="dropdown dropdown-lg">
+                                <button style="height:50px; type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></button>
+                                <div class="dropdown-menu dropdown-menu-right" role="menu">
+                                    <form class="form-horizontal" role="form">
+                                      <div class="form-group">
+                                        <label for="filter">Filter by</label>
+                                        <select class="form-control">
+                                            <option value="0" selected>All Snippets</option>
+                                            <option value="1">Featured</option>
+                                            <option value="2">Most popular</option>
+                                            <option value="3">Top rated</option>
+                                            <option value="4">Most commented</option>
+                                        </select>
+                                      </div>
+                                      <div class="form-group">
+                                        <label for="contain">Author</label>
+                                        <input class="form-control" type="text" />
+                                      </div>
+                                      <div class="form-group">
+                                        <label for="contain">Contains the words</label>
+                                        <input class="form-control" type="text" />
+                                      </div>
+                                      <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                                    </form>
+                                </div>
+                            </div>
+                            <a href="#/products" class="btn btn-primary"><span class="glyphicon glyphicon-search" style="vertical-align: middle" aria-hidden="true"></span></a>
+                        </div>
+                    </div>
+                </div>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active"><a href="#/new/contact">Register</a></li>
+            <li class="active"><a href="#/login">Login</a></li>
           </ul>
         </div>
       </div>

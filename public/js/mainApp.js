@@ -39,4 +39,11 @@ angular.module("mainApp", ['ngRoute', 'mainApp.contactsApp','mainApp.productsApp
             .otherwise({
                 redirectTo: "/"
             })
-    });
+
+        })
+        .controller("SearchBarController", function($scope, $location) {
+            //console.log(Products);
+            $scope.search = function() {
+            $location.path("#/products");
+            }
+        });
