@@ -38,3 +38,9 @@
 1. create a routes folder 
 2. commands include post, get, delete, and put
 3. git push heroku master 
+
+***************************************RUN LOCALLY*********************************************
+
+1. heroku git:clone -a evening-escarpment-98449
+2. heroku git:remote -a evening-escarpment-98449
+3. heroku config:get MONGODB_URI -s >> .env

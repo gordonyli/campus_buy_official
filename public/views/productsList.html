@@ -90,9 +90,9 @@
               <input type="checkbox" ng-click="includeColour('condition_9')"><div class="condition_label">Like New</div><br>
               <input type="checkbox" ng-click="includeColour('condition_8')"><div class="condition_label">Barely Used</div><br>
               <input type="checkbox" ng-click="includeColour('condition_7')"><div class="condition_label">Used</div><br>
-              <input type="checkbox" ng-click="includeColour('condition_6')"><br>
-              <input type="checkbox" ng-click="includeColour('condition_5')"><br>
-              <input type="checkbox" ng-click="includeColour('condition_4')">
+              <input type="checkbox" ng-click="includeColour('condition_6')"><div class="condition_label">Very Used</div><br>
+              <input type="checkbox" ng-click="includeColour('condition_5')"><div class="condition_label">Old</div><br>
+              <input type="checkbox" ng-click="includeColour('condition_4')"><div class="condition_label">Very Old</div><br>
 
             </li>
           </ul>
@@ -140,17 +140,6 @@
     <div class="container-fluid">
       <!-- Page Content -->
       <div class="container">
-        <label>Any: <input data-ng-model="search.itemName"></label> <br>
-        <label>Type: <input ng-model="search.itemType"></label> <br>
-        <label>Condition: <input ng-model="search.itemCondition"></label> <br>
-        <input type="checkbox" data-ng-model="hello" data-ng-true-value="YES" data-ng-false-value=''></label><br>
-        <div> value = {{hello}} </div>
-        <label ng-model="hi"></label>
-
-        <input type="checkbox" ng-click="includeColour('condition_9')"/> Red</br/>
-        <input type="checkbox" ng-click="includeColour('Orange')"/> Orange</br/>
-        <input type="checkbox" ng-click="includeColour('Yellow')"/> Yellow</br/>
-
         <div class="container">
           <table class="table table-hover">
             <tbody>
