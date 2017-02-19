@@ -87,13 +87,11 @@
           <a href="javascript:;" data-toggle="collapse" data-target="#demo2"><i class="fa fa-heart"></i> Condition <i class="fa fa-fw fa-caret-down"></i></a>
           <ul id="demo2" class="collapse" >
             <li>
-              <input type="checkbox" ng-click="includeColour('condition_9')"><div class="condition_label">Like New</div><br>
-              <input type="checkbox" ng-click="includeColour('condition_8')"><div class="condition_label">Barely Used</div><br>
-              <input type="checkbox" ng-click="includeColour('condition_7')"><div class="condition_label">Used</div><br>
-              <input type="checkbox" ng-click="includeColour('condition_6')"><div class="condition_label">Very Used</div><br>
-              <input type="checkbox" ng-click="includeColour('condition_5')"><div class="condition_label">Old</div><br>
-              <input type="checkbox" ng-click="includeColour('condition_4')"><div class="condition_label">Very Old</div><br>
-
+              <input type="checkbox" ng-click="includeColour('Brand New')"><div class="condition_label">Brand New</div><br>
+              <input type="checkbox" ng-click="includeColour('Like New')"><div class="condition_label">Like New</div><br>
+              <input type="checkbox" ng-click="includeColour('Gently Used')"><div class="condition_label">Gently Used</div><br>
+              <input type="checkbox" ng-click="includeColour('Heavily Used')"><div class="condition_label">Heavily Used</div><br>
+              <input type="checkbox" ng-click="includeColour('Bad')"><div class="condition_label">Bad</div><br>
             </li>
           </ul>
         </li>
@@ -143,11 +141,31 @@
         <div class="container">
           <table class="table table-hover">
             <tbody>
+              <thead>
+                <tr>
+                  <th>Item</th>
+                  <th>Category</th>
+                  <th>Price</th>
+                  <th>Condition</th>
+                  <th>Remove</th>
+                </tr>
+              </thead>
               <tr data-ng-repeat="product in products | filter:colourFilter">
-              <td>
-                <a ng-href="#/products">{{ product.itemName }}</a>
-                <button ng-click="deleteProduct(product._id)"> Delete </button>
-              </td>
+                <td>
+                  <a ng-href="#/products">{{ product.itemName }}</a>
+                </td>
+                <td>
+                  {{product.itemType}}
+                </td>
+                <td>
+                  {{product.itemPrice}}
+                </td>
+                <td>
+                  {{product.itemCondition}}
+                </td>
+                <td>
+                  <button ng-click="deleteProduct(product._id)"> Delete </button>
+                </td>
               </tr>
             </tbody>
           </table>
