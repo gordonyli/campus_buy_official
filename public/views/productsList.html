@@ -146,6 +146,7 @@
               <tr data-ng-repeat="product in products | filter:colourFilter">
               <td>
                 <a ng-href="#/products">{{ product.itemName }}</a>
+                <button ng-click="deleteProduct(product._id)"> Delete </button>
               </td>
               </tr>
             </tbody>

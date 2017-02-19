@@ -60,4 +60,25 @@ router.post("/new/products",  function(req, res) {
         }
     });
 });
+
+router.get("/product/:id",  function(req, res) {
+    db.collection(PRODUCTS_COLLECTION).findOne({ _id: new ObjectID(req.params.id) }, function(err, doc) {
+        if (err) {
+            handleError(res, err.message, "Failed to get contact");
+        } else {
+            res.status(200).json(doc);
+        }
+    });
+});
+
+router.delete("/products/:id",  function(req, res) {
+    db.collection(PRODUCTS_COLLECTION).deleteOne({_id: new ObjectID(req.params.id)}, function(err, result) {
+        if (err) {
+            handleError(res, err.message, "Failed to delete product");
+        } else {
+            res.status(204).end();
+        }
+    });
+});
+
 module.exports = router;

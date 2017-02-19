@@ -16,11 +16,21 @@ angular.module("mainApp.productsApp", ['ngRoute'])
                 alert("Error creating product.");
             });
         }
+        this.deleteProduct = function(productId) {
+            var url = "/api/products/" + productId;
+            return $http.delete(url).
+            then(function(response) {
+                return response;
+            }, function(response) {
+                alert("Error deleting this product.");
+                console.log(response);
+            });
+        }
     })
-    .controller("ProductsListController", function(products, $scope, $filter) {
-        console.log(products.data);
+    .controller("ProductsListController", function(products, $scope, $filter, Products, $window) {
         $scope.products = products.data;
         $scope.colourIncludes = [];
+        console.log($scope.products);
 
         $scope.includeColour = function(colour) {
             var i = $.inArray(colour, $scope.colourIncludes);
@@ -38,6 +48,14 @@ angular.module("mainApp.productsApp", ['ngRoute'])
 
             return fruit;
         }
+        $scope.check = function(productID) {
+            console.log(productID);
+        }
+        $scope.deleteProduct = function(productId) {
+            Products.deleteProduct(productId);
+            $window.location.reload();
+        }
+
     })
     .controller("NewProductController", function($scope, $location, Products) {
         console.log(Products);
