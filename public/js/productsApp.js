@@ -22,7 +22,7 @@ angular.module("mainApp.productsApp", ['ngRoute'])
             then(function(response) {
                 return response;
             }, function(response) {
-                alert("Error deleting this product.");
+                //alert("Error deleting this product.");
                 console.log(response);
             });
         }
