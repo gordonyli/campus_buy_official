@@ -70,7 +70,6 @@ router.get("/product/:id",  function(req, res) {
             res.status(200).json(doc);
         }
     });
-    console.log("asda");
 });
 
 router.delete("/products/:id",  function(req, res) {

@@ -36,7 +36,6 @@ router.get("/cart",  function(req, res) {
         if (err) {
             handleError(res, err.message, "Failed to get cart.");
         } else {
-            console.log("cart");
             res.status(200).json(docs);
         }
     });
@@ -59,7 +58,6 @@ router.get("/cart/:id",  function(req, res) {
         if (err) {
             handleError(res, err.message, "Failed to get product from the cart");
         } else {
-            console.log(req.params.id);
             res.status(200).json(doc);
         }
     });

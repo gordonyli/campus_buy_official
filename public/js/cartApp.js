@@ -2,7 +2,6 @@ angular.module("cartApp", ['ngRoute'])
 	.service("Cart", function($http, ngCartItem) {
 		this.addItem = function(product) {
 			var newCart = new ngCartItem(product._id, product.itemName, product.itemPrice);
-			console.log("hello");
 			return $http.post("/api/new/cart", newCart).
 			then(function(response){
 				return response;
@@ -32,14 +31,12 @@ angular.module("cartApp", ['ngRoute'])
 			var total = 0;
 			angular.forEach(items, function(cart) {
 				total += cart._price;
-				//console.log(cart.itemPrice);
 			});
 			return +parseFloat(total).toFixed(2);
 		}
 
 		this.removeItemById = function(productId) {
 			var url = "/api/cart/" + productId;
-			console.log("I'm here!");
 			return $http.delete(url).
 			then(function(response){
 				return response;
@@ -50,49 +47,24 @@ angular.module("cartApp", ['ngRoute'])
 	})
 	.controller("EditCartController", function($scope, Cart, $window, $location) {
 		$scope.saveToCart = function(product) {
-			console.log("start:");
-			console.log(product);
-			console.log("id:");
-			console.log(product._id);
 			Cart.addItem(product).then(function(doc) {
-				console.log("this is doc");
-				console.log(doc.data._id);
 				var cartProductUrl = "/cart/" + doc.data._id;
 				$location.path(cartProductUrl);
 			}, function(response) {
 				alert(response);
 			});
 		}
-		$scope.hi = "Tony";
-
 
 		$scope.deleteFromCart = function(productId) {
-			console.log("hihihi");
 			Cart.removeItemById(productId);
-			console.log("yo");
 			$window.location.reload();
 		}
 	})
 
 	.controller("CartListController", function(cart, $scope, Cart, $window) {
 		$scope.getItems = cart.data;
-		console.log($scope.getItems);
 		$scope.totalItems = Cart.getTotalItems(cart.data);
-		console.log($scope.totalItems);
-		// $scope.totalItems = function() {
-		// 	Cart.getTotalItems(cart.data);
-		// }
 		$scope.totalPrice = Cart.totalCost(cart.data);
-		console.log($scope.totalPrice);
-		// $scope.totalPrice = function() {
-		// 	Cart.totalCost(cart.data);
-		// }
-		$scope.name = "Tony";
-
-		// $scope.deleteFromCart = function(productId) {
-		// 	Cart.removeItemById(productId);
-		// 	$window.location.reload();
-		// }
 	})
 
 	.factory('ngCartItem', ['$rootScope', '$log', function($rootScope, $log) {
