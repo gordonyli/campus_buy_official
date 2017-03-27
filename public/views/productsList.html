@@ -1,4 +1,7 @@
-<link href="../css/buy_item.css" rel="stylesheet">
+<head>
+  <link href="../css/buy_item.css" rel="stylesheet">
+  <!-- <script src="../js/cartApp.js"></script> -->
+</head>
 
 <!--<div class = "row">-->
   <!--<div class="col-md-6">-->
@@ -147,6 +150,7 @@
                   <th>Category</th>
                   <th>Price</th>
                   <th>Condition</th>
+                  <th>Add to Cart</th>
                   <th>Remove</th>
                 </tr>
               </thead>
@@ -162,6 +166,11 @@
                 </td>
                 <td>
                   {{product.itemCondition}}
+                </td>
+                <td>
+                  <div ng-app="cartApp" ng-controller="EditCartController">
+                    <button ng-click="saveToCart(product)" class="glyphicon glyphicon-shopping-cart"></button>
+                  </div> 
                 </td>
                 <td>
                   <button ng-click="deleteProduct(product._id)"> Delete </button>

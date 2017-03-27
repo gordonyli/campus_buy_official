@@ -66,9 +66,11 @@ router.get("/product/:id",  function(req, res) {
         if (err) {
             handleError(res, err.message, "Failed to get contact");
         } else {
+            
             res.status(200).json(doc);
         }
     });
+    console.log("asda");
 });
 
 router.delete("/products/:id",  function(req, res) {

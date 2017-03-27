@@ -1,5 +1,5 @@
 //where all routing happens
-angular.module("mainApp", ['ngRoute', 'mainApp.contactsApp','mainApp.productsApp'])
+angular.module("mainApp", ['ngRoute', 'mainApp.contactsApp','mainApp.productsApp', 'cartApp'])
     .config(function($routeProvider) {
         $routeProvider
             .when("/", {
@@ -35,6 +35,15 @@ angular.module("mainApp", ['ngRoute', 'mainApp.contactsApp','mainApp.productsApp
             .when("/sell", {
                 templateUrl: "../views/sell-form.html",
                 controller: "NewProductController",
+            })
+            .when("/cart", {
+                templateUrl: "../views/cart.html",
+                controller: "CartListController",
+                resolve: {
+                    cart: function(Cart) {
+                        return Cart.getCart();
+                    }
+                }
             })
             .otherwise({
                 redirectTo: "/"

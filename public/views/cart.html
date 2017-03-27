@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<!-- <body ng-app="mainApp"> -->
+    <div class="alert alert-warning" role="alert" ng-show="totalItems == 0">
+        Your cart is empty
+    </div>
+    <div class="table-responsive col-lg12" ng-show="totalItems > 0">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th>Amount</th>
+            </tr>
+            </thead>
+            <tfoot>
+            <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th>Total:</th>
+            <td>{{ totalPrice | currency }}</td>
+            </tr> 
+            </tfoot>
+            <tbody>
+            <tr ng-repeat="item in getItems track by $index">       
+                <th></th>
+                <th></th>
+                <th></th>
+                <td>
+                    <div ng-app="cartApp" ng-controller="EditCartController">
+                        
+                        <span ng-click="deleteFromCart(item._id)" class="glyphicon glyphicon-remove"></span>
+                        
+                    </div>
+                </td>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <td> {{ item._name }} </td>
+                <th></th>
+                <th></th>
+                <td> {{ item._price | currency }} </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+<!-- </body> -->
+</html>
+    
+<style>
+    span[ng-click] {
+        cursor: pointer;
+    }
+    .glyphicon.disabled {
+        color:#aaa;
+    }
+</style>  
