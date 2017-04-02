@@ -37,7 +37,7 @@
     <script src="../js/cartApp.js"></script> -->
   </head>
 
-  <body>
+  <body ng-controller="SearchBarController">
     <!--<nav class="navbar navbar-default navbar-fixed-top">-->
       <!--<div class="container">-->
         <!--<div class="navbar-header">-->
@@ -52,9 +52,8 @@
         <!--</div>-->
       <!--</div>-->
     <!--</nav>-->
-
-    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
-      <div class="container-fluid">
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top" style="margin-bottom: 0;">
+      <div class="container-fluid navigation">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
             <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
@@ -62,6 +61,13 @@
           <a class="navbar-brand page-scroll" href="#/">CampusBuy</a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <form class="navbar-form navbar-left" action="/#/products">
+            <div class="form-group">
+              <input type="text" class="form-control" ng-model="tester" placeholder="Search Item" style="margin-left: 0%;">
+            </div>
+            <button class="btn btn-default" ng-click="submitIt()" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+          </form>
+
           <ul class="nav navbar-nav navbar-right">
             <li>
               <a class="page-scroll" ng-show="main.isLoggedIn" href="#/profile">{{ main.firstName }}</a>
@@ -69,9 +75,9 @@
             <li>
               <a class="page-scroll" href="#/sell">Sell an Item</a>
             </li>
-            <li>
-              <a class="page-scroll" href="#/products">Products</a>
-            </li>
+            <!--<li>-->
+              <!--<a class="page-scroll" href="#/products">Products</a>-->
+            <!--</li>-->
             <li>
               <a class="page-scroll" href="mymarket.html">My Market</a>
             </li>
@@ -87,10 +93,22 @@
           </ul>
         </div>
       </div>
+      <div class="container-fluid search" style="height: 50%;">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+          </button>
+        </div>
+        <div class="collapse navbar-collapse searching" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+
+          </ul>
+        </div>
+      </div>
     </nav>
 
     <!-- Dynamically render templates -->
-    <div class="container" ng-view>
+    <div class="container" ng-view style="width: 100%; margin: 0; padding-left: 0; padding-right: 0; padding-top: 0; margin-top: 0%;" >
     </div>
   </body>
 </html>
