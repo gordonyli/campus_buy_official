@@ -1,6 +1,6 @@
 angular.module("mainApp.productsApp", ['ngRoute'])
     .service("Products", function($http) {
-        this.search = "asdf";
+        this.search = "";
 
         this.setSearch = function(data) {
             this.search = data;
@@ -11,8 +11,18 @@ angular.module("mainApp.productsApp", ['ngRoute'])
 
         this.getProducts = function() {
             console.log("search: " + this.getSearch());
+            var query = this.getSearch();
             return $http.get("/api/products").
             then(function(response) {
+                for(var i = 0; i < response.data.length; i++) {
+                    var curr = response.data[i].itemName;
+                    curr = curr.toLowerCase();
+                    query = query.toLowerCase();
+                    var index = response.data.indexOf(response.data[i]);
+                    if(!(curr.includes(query))) {
+                        delete response.data[index];
+                    }
+                }
                 return response;
             }, function(response) {
                 alert("Error finding products.");
@@ -91,5 +101,6 @@ angular.module("mainApp.productsApp", ['ngRoute'])
         $scope.tester = "";
         $scope.submitIt = function() {
             Products.setSearch($scope.tester);
+            console.log(Products.search);
         }
     });
