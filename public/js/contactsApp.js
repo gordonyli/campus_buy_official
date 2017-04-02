@@ -77,6 +77,7 @@ angular.module("mainApp.contactsApp", ['ngRoute'])
             alert(response);
         });
 
+        $scope.tester = "hello";
         $scope.toggleEdit = function() {
             $scope.editMode = true;
             $scope.contactFormUrl = "../views/contact-form.html";

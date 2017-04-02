@@ -146,8 +146,8 @@
                   <th>Item</th>
                   <th>Category</th>
                   <th>Price</th>
-                  <th>Condition</th>
-                  <th>Remove</th>
+                  <th>Condition {{tester}}</th>
+                  <!--<th>Remove</th>-->
                 </tr>
               </thead>
               <tr data-ng-repeat="product in products | filter:colourFilter">
@@ -163,9 +163,9 @@
                 <td>
                   {{product.itemCondition}}
                 </td>
-                <td>
-                  <button ng-click="deleteProduct(product._id)"> Delete </button>
-                </td>
+                <!--<td>-->
+                  <!--<button ng-click="deleteProduct(product._id)"> Delete </button>-->
+                <!--</td>-->
               </tr>
             </tbody>
           </table>

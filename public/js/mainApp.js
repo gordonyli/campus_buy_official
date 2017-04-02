@@ -4,12 +4,7 @@ angular.module("mainApp", ['ngRoute', 'mainApp.contactsApp','mainApp.productsApp
         $routeProvider
             .when("/", {
                 templateUrl: "../views/list.html",
-                controller: "ListController",
-                resolve: {
-                    contacts: function(Contacts) {
-                        return Contacts.getContacts();
-                    }
-                }
+                controller: "SearchBarController",
             })
             .when("/new/contact", {
                 controller: "NewContactController",
@@ -41,9 +36,3 @@ angular.module("mainApp", ['ngRoute', 'mainApp.contactsApp','mainApp.productsApp
             })
 
         })
-        .controller("SearchBarController", function($scope, $location) {
-            //console.log(Products);
-            $scope.search = function() {
-            $location.path("#/products");
-            }
-        });

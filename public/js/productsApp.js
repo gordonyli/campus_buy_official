@@ -1,12 +1,23 @@
 angular.module("mainApp.productsApp", ['ngRoute'])
     .service("Products", function($http) {
+        this.search = "asdf";
+
+        this.setSearch = function(data) {
+            this.search = data;
+        }
+        this.getSearch = function() {
+            return this.search;
+        }
+
         this.getProducts = function() {
+            console.log("search: " + this.getSearch());
             return $http.get("/api/products").
             then(function(response) {
                 return response;
             }, function(response) {
                 alert("Error finding products.");
             });
+
         }
         this.createProduct = function(product) {
             return $http.post("/api/new/products", product).
@@ -26,9 +37,11 @@ angular.module("mainApp.productsApp", ['ngRoute'])
                 console.log(response);
             });
         }
+
     })
     .controller("ProductsListController", function(products, $scope, $filter, Products, $window) {
         $scope.products = products.data;
+        $scope.tester = "hi";
         $scope.colourIncludes = [];
         console.log($scope.products);
 
@@ -72,5 +85,11 @@ angular.module("mainApp.productsApp", ['ngRoute'])
             }, function(response) {
                 alert(response);
             });
+        }
+    })
+    .controller("SearchBarController", function($scope, $routeParams, Products) {
+        $scope.tester = "";
+        $scope.submitIt = function() {
+            Products.setSearch($scope.tester);
         }
     });
