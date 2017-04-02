@@ -16,13 +16,31 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <!-- Create some padding for body -->
     <link href="../css/index.css" rel="stylesheet">
+    <link href="../css/bootstrap-template.css" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <style>
       body {
         min-height: 2000px;
         padding-top: 70px;
+      }
+      .searchbar {
+        border: 0 !important;
+        outline: 0 !important;
+        background: transparent !important;
+        border-bottom: 1px solid white !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        color: white !important;
+      }
+      button {
+        border: 0 !important;
+        outline: 0 !important;
+        background: transparent !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        color: white !important;
       }
     </style>
     <script src="../js/mainApp.js"></script>
@@ -38,21 +56,7 @@
   </head>
 
   <body ng-controller="SearchBarController">
-    <!--<nav class="navbar navbar-default navbar-fixed-top">-->
-      <!--<div class="container">-->
-        <!--<div class="navbar-header">-->
-          <!--<div class="navbar-brand" href="#/">Campus Buy</div>-->
-        <!--</div>-->
-        <!--<div id="navbar" class="navbar-collapse collapse">-->
-          <!--<ul class="nav navbar-nav">-->
-            <!--<li class="active"><a href="#/">Home</a></li>-->
-            <!--<li class="active"><a href="#/products">Products</a></li>-->
-            <!--<li class="active"><a href="#/sell">Sell</a></li>-->
-          <!--</ul>-->
-        <!--</div>-->
-      <!--</div>-->
-    <!--</nav>-->
-    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top" style="margin-bottom: 0;">
+    <nav id="mainNav" class="navbar navbar-custom navbar-fixed-top" style="margin-bottom: 10%; font-family: 'Open Sans', sans-serif">
       <div class="container-fluid navigation">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -63,9 +67,10 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <form class="navbar-form navbar-left" action="/#/products">
             <div class="form-group">
-              <input type="text" class="form-control" ng-model="tester" placeholder="Search Item" style="margin-left: 0%;">
+              <input type="text" class="form-control searchbar" ng-model="tester" placeholder="Search Item" style="border-bottom: 1px solid white;">
+              <button class="btn btn-default" ng-click="submitIt()" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+
             </div>
-            <button class="btn btn-default" ng-click="submitIt()" type="submit"><span class="glyphicon glyphicon-search"></span></button>
           </form>
 
           <ul class="nav navbar-nav navbar-right">
