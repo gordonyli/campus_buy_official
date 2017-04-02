@@ -1,7 +1,4 @@
-<head>
-  <link href="../css/buy_item.css" rel="stylesheet">
-  <!-- <script src="../js/cartApp.js"></script> -->
-</head>
+<link href="../css/buy_item.css" rel="stylesheet">
 
 <!--<div class = "row">-->
   <!--<div class="col-md-6">-->
@@ -147,34 +144,25 @@
               <thead>
                 <tr>
                   <th>Item</th>
-                  <th>Category</th>
                   <th>Price</th>
                   <th>Condition</th>
-                  <th>Add to Cart</th>
-                  <th>Remove</th>
+                  <!--<th>Remove</th>-->
                 </tr>
               </thead>
               <tr data-ng-repeat="product in products | filter:colourFilter">
                 <td>
                   <a ng-href="#/products">{{ product.itemName }}</a>
                 </td>
-                <td>
-                  {{product.itemType}}
-                </td>
+
                 <td>
                   {{product.itemPrice}}
                 </td>
                 <td>
                   {{product.itemCondition}}
                 </td>
-                <td>
-                  <div ng-app="cartApp" ng-controller="EditCartController">
-                    <button ng-click="saveToCart(product)" class="glyphicon glyphicon-shopping-cart"></button>
-                  </div> 
-                </td>
-                <td>
-                  <button ng-click="deleteProduct(product._id)"> Delete </button>
-                </td>
+                <!--<td>-->
+                  <!--<button ng-click="deleteProduct(product._id)"> Delete </button>-->
+                <!--</td>-->
               </tr>
             </tbody>
           </table>
