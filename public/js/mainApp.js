@@ -5,12 +5,7 @@ angular.module("mainApp", ['ngRoute', 'mainApp.contactsApp','mainApp.productsApp
         $routeProvider
             .when("/", {
                 templateUrl: "../views/list.html",
-                //controller: "ListController",
-                // resolve: {
-                //     contacts: function(Contacts) {
-                //         return Contacts.getContacts();
-                //     }
-                // }
+                controller: "SearchBarController"
             })
             .when("/register", {
                 // controller: "NewContactController",
@@ -64,9 +59,3 @@ angular.module("mainApp", ['ngRoute', 'mainApp.contactsApp','mainApp.productsApp
     .config(function($httpProvider) {
         $httpProvider.interceptors.push('AuthInterceptors');
     })
-        .controller("SearchBarController", function($scope, $location) {
-            //console.log(Products);
-            $scope.search = function() {
-            $location.path("#/products");
-            }
-        });
