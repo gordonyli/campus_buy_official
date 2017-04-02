@@ -1,17 +1,28 @@
 <head>
   <link href="../css/buy_item.css" rel="stylesheet">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
   <!-- <script src="../js/cartApp.js"></script> -->
+  <style>
+    a {
+      color: black;
+    }
+    .nav-a {
+      color: white;
+    }
+  </style>
 </head>
 
-<div id="wrapper" style="margin-top:5%;">
+
+<div id="wrapper" style="margin-top:1%;">
 
   <!-- Side Navigation -->
 
     <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-    <div class="collapse navbar-collapse navbar-ex1-collapse">
-      <ul class="nav navbar-nav side-nav">
+    <div class="collapse navbar-collapse navbar-ex1-collapse" >
+      <ul class="nav navbar-nav side-nav"  style="top: 9% !important; background-color: #2C3E50">
         <li>
-          <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-star"></i> Seller Rating <i class="fa fa-fw fa-caret-down"></i></a>
+          <a class="nav-a" href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-star"></i> Seller Rating <i class="fa fa-fw fa-caret-down"></i></a>
           <ul id="demo" class="collapse">
             <li>
               <a href="#"><i class="fa fa-star" aria-hidden="true" style="color:gold"></i>
@@ -51,7 +62,7 @@
           </ul>
         </li>
         <li>
-          <a href="javascript:;" data-toggle="collapse" data-target="#demo1"><i class="fa fa-usd"></i> Price <i class="fa fa-fw fa-caret-down"></i></a>
+          <a class="nav-a" href="javascript:;" data-toggle="collapse" data-target="#demo1"><i class="fa fa-usd"></i> Price <i class="fa fa-fw fa-caret-down"></i></a>
           <ul id="demo1" class="collapse" >
             <li>
               <a href="#">
@@ -71,7 +82,7 @@
           </ul>
         </li>
         <li>
-          <a href="javascript:;" data-toggle="collapse" data-target="#demo2"><i class="fa fa-heart"></i> Condition <i class="fa fa-fw fa-caret-down"></i></a>
+          <a class="nav-a" href="javascript:;" data-toggle="collapse" data-target="#demo2"><i class="fa fa-heart"></i> Condition <i class="fa fa-fw fa-caret-down"></i></a>
           <ul id="demo2" class="collapse" >
             <li>
               <input type="checkbox" ng-click="includeColour('Brand New')"><div class="condition_label">Brand New</div><br>
@@ -83,7 +94,7 @@
           </ul>
         </li>
         <li>
-          <a href="javascript:;" data-toggle="collapse" data-target="#demo3"><i class="fa fa-money"></i> Method of Payment <i class="fa fa-fw fa-caret-down"></i></a>
+          <a class="nav-a" href="javascript:;" data-toggle="collapse" data-target="#demo3"><i class="fa fa-money"></i> Method of Payment <i class="fa fa-fw fa-caret-down"></i></a>
           <ul id="demo3" class="collapse" >
             <li>
               <a href="#"><label class="custom-control custom-checkbox">
@@ -119,7 +130,7 @@
 
     <!-- /.navbar-collapse -->
 
-  <div id="page-wrapper">
+  <div id="page-wrapper" style="color: black !important;">
 
     <div class="container-fluid">
       <!-- Page Content -->
@@ -135,7 +146,7 @@
                   <th>Add to Cart</th>
                 </tr>
               </thead>
-              <tr data-ng-repeat="product in products | filter:colourFilter">
+              <tr data-ng-repeat="product in products | filter:colourFilter" style="color: black !important;">
                 <td>
                   <a ng-href="#/products">{{ product.itemName }}</a>
                 </td>
@@ -147,7 +158,10 @@
                 </td>
                 <td>
                   <div ng-app="cartApp" ng-controller="EditCartController">
-                    <button ng-click="saveToCart(product)" class="glyphicon glyphicon-shopping-cart"></button>
+                    <a ng-click="saveToCart(product)">
+                      <i class="fa fa-cart-plus" style="font-size: 2em; color: #18BC9C;" aria-hidden="true"></i>
+
+                    </a>
                   </div> 
                 </td>
               </tr>

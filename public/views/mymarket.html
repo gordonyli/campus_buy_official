@@ -1,133 +1,57 @@
-<link href="../css/buy_item.css" rel="stylesheet">
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+<input id="UserID" ng-model="search.id" ng-init="search.id=userId" type="hidden" />
 
-<div id="wrapper">
-    <!-- Side Navigation -->
-
-    <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-    <div class="collapse navbar-collapse navbar-ex1-collapse">
-
-      <ul class="nav navbar-nav side-nav">
-        <li>
-          <h2 style="color:white; text-align:center;">
-            User ID
-          </h2>
-          <p style="color:white; text-align:center;">
-            Mark1
-          </p>
-
-        <li>
-          <p>
-        </li>
-
-      </ul>
+<div class="container" >
+  <div class="panel-heading">
+    <div class="panel-title text-center">
+      <h1 class="title" style="font-family: 'Oxygen', sans-serif;">My Market</h1>
+      <hr style="width: 10%">
     </div>
-
-
-    <!-- /.navbar-collapse -->
-  </nav>
-  <div id="page-wrapper">
-    <div class="col-md-20">
-      <h2>My Market</h2>
-    </div>
-    <p>
-      <!-- <label>UserID:
-      <input id="UserID" ng-model="search.id" type="text" placeholder="111" required>
-      <span ng-hide="name.length">Please type User ID</span>
-      </label> -->
-      <label>UserID:
-      <!-- <input id="UserID" ng-model="myVar" type="text" ng-change="search.id=myVar"/> -->
-      <!-- <input id="UserID" ng-model="search.id" type="text" /> -->
-      <input id="UserID" ng-model="search.id" ng-init="search.id=userId" type="hidden" />
-      </label>
-
-    </p>
-    <div class="container-fluid">
-
-      <!-- Page Content -->
-      <div class="container">
-        <div class="container">
-          <table class="table table-hover">
-            <tbody>
-              <thead>
-                <tr>
-                  <th>Item</th>
-                  <th>Category</th>
-                  <th>Price</th>
-                  <th>Condition</th>
-                  <th>UserID</th>
-                  <th>Remove</th>
-                </tr>
-              </thead>
-              <tr data-ng-repeat="product in products | filter:search:strict">
-                <td>
-                  <a ng-href="#/products">{{ product.itemName }}</a>
-                </td>
-                <td>
-                  {{product.itemType}}
-                </td>
-                <td>
-                  {{product.itemPrice}}
-                </td>
-                <td>
-                  {{product.itemCondition}}
-                </td>
-                <td>
-                  {{product.id}}
-                </td>
-                <td>
-                  <button ng-click="deleteProduct(product._id)"> Delete </button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-        <!-- Pagination -->
-      <div class="row text-center">
-          <div class="col-lg-12">
-            <ul class="pagination">
-              <li>
-                <a href="#">&laquo;</a>
-              </li>
-              <li class="active">
-                <a href="#">1</a>
-              </li>
-              <li>
-                <a href="#">2</a>
-              </li>
-              <li>
-                <a href="#">3</a>
-              </li>
-              <li>
-                <a href="#">4</a>
-              </li>
-              <li>
-                <a href="#">5</a>
-              </li>
-              <li>
-                <a href="#">&raquo;</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      <hr>
-      <footer>
-          <div class="row">
-            <div class="col-lg-12">
-              <p>Copyright &copy; CampusBuy 2016 Team Tabs, 192</p>
-            </div>
-          </div>
-        </footer>
-      </div>
-      <!-- /.container -->
-
-    </div>
-    <!-- /.container-fluid -->
-
   </div>
-  <!-- /#page-wrapper -->
+  <table id="cart" class="table table-hover table-condensed">
+    <thead>
+    <tr>
+      <th style="width:50%">Product</th>
+      <th style="width:10%">Remove</th>
+    </tr>
+    </thead>
+    <tbody style="width: 100%">
+    <tr data-ng-repeat="product in products | filter:search:strict">
+      <td data-th="Product">
+        <div class="row">
+          <div class="col-sm-2 hidden-xs"><img src="http://placehold.it/100x100" alt="..." class="img-responsive"/></div>
+          <div class="col-sm-10">
+            <h4 class="nomargin"> {{ product.itemName }} </h4>
+            <p>Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet.</p>
+          </div>
+        </div>
+      </td>
+      <td>
+        <div ng-app="cartApp" ng-controller="EditCartController">
 
+          <span ng-click="deleteFromCart(item._id)" class="fa fa-trash"></span>
+
+        </div>
+      </td>
+    </tr>
+    </tbody>
+    <tfoot>
+    <tr>
+      <td><a href="/#/" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
+      <td colspan="2" class="hidden-xs"></td>
+    </tr>
+    </tfoot>
+  </table>
 </div>
+
+<style>
+  span[ng-click] {
+    cursor: pointer;
+  }
+  .glyphicon.disabled {
+    color:#aaa;
+  }
+</style>
 
 
