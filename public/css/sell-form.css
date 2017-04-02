@@ -1,5 +1,12 @@
-body{
+.panel-heading{
     margin-top:40px;
+    font-family: 'Oxygen', sans-serif;
+}
+
+
+.container {
+    font-family: 'Oxygen', sans-serif;
+
 }
 
 .stepwizard-step p {
@@ -47,11 +54,13 @@ body{
     font-size: 12px;
     line-height: 1.428571429;
     border-radius: 15px;
+
 }
 
-.btn-primary {
-    background-color: black !important;
+.nextBtn {
+    background-color: #18BC9C !important;
     border-radius: 50px !important;
     padding-left: 5%;
     padding-right: 5%;
+    margin-top: 3%;
 }
