@@ -15,11 +15,13 @@ angular.module('mainController', ['authServices'])
 				app.email = data.data.email;
 				app.phone = data.data.phone;
 				app.loadme = true;
+				console.log(app.firstName);
 			});
 		} else {
 			app.isLoggedIn = false;
 			app.firstName = '';
 			app.loadme = true;
+
 		}
 	});
 
