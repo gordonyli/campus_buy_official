@@ -1,0 +1,36 @@
+<div class="page-header">
+	<h1>User Registration!</h1>
+</div>
+
+<form ng-submit="register.regUser(regData);">
+	<label>Firstname:</label>
+	<input class="form-control" type="text" name="firstname" placeholder="please enter firstname" ng-model="register.regData.firstName">
+	<br>
+
+	<label>Lastname:</label>
+	<input class="form-control" type="text" name="lastname" placeholder="please enter lastname" ng-model="register.regData.lastName">
+	<br>
+
+	<label>GT Email:</label>
+	<input class="form-control" type="text" name="email" placeholder="please enter email" ng-model="register.regData.email">
+	<br>
+
+	<label>Phone:</label>
+	<input class="form-control" type="text" name="phone" placeholder="please enter phone" ng-model="register.regData.phone">
+	<br>
+
+	<label>Password:</label>
+	<input class="form-control" type="password" name="password" placeholder="please enter password" ng-model="register.regData.password">
+	<br>
+	<button class="btn btn-primary" type="submit">Register</button>
+</form>
+
+<br>
+
+<div class="row show-hide-message" ng-show="register.successMsg">
+	<div class="alert alert-success">{{ register.successMsg }}</div>
+</div>
+
+<div class="row show-hide-message" ng-show="register.errorMsg">
+	<div class="alert alert-danger">{{ register.errorMsg }}</div>
+</div>

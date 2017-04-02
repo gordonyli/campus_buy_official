@@ -23,10 +23,14 @@
   },
   "homepage": "https://github.com/gordonyli/campus_buy_official",
   "dependencies": {
-    "body-parser": "^1.13.3",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.17.1",
     "cas-authentication": "0.0.8",
     "ejs": "^2.5.5",
     "express": "^4.13.3",
-    "mongodb": "^2.0.43"
+    "jsonwebtoken": "^7.3.0",
+    "mongodb": "^2.0.43",
+    "mongoose": "^4.9.2",
+    "morgan": "^1.8.1"
   }
 }

@@ -41,7 +41,7 @@ angular.module("cartApp", ['ngRoute'])
 			then(function(response){
 				return response;
 			}, function(response) {
-				alert("Error deleting product from cart.");
+				//alert("Error deleting product from cart.");
 			});
 		};
 	})

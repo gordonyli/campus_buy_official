@@ -15,8 +15,6 @@ function handleError(res, reason, message, code) {
     res.status(code || 500).json({"error": message});
 }
 
-var db;
-
 // Connect to the database before starting the application server.
 mongodb.MongoClient.connect(process.env.MONGODB_URI, function (err, database) {
     if (err) {

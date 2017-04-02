@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="mainApp">
+<html lang="en" ng-app="mainApp" ng-controller="mainCtrl as main" ng-show="main.loadme" ng-cloak>
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -29,6 +29,10 @@
     <script src="../js/contactsApp.js"></script>
     <script src="../js/productsApp.js"></script>
     <script src="../js/cartApp.js"></script>
+    <script src="../js/controllers/userCtrl.js"></script>
+    <script src="../js/controllers/mainCtrl.js"></script>
+    <script src="../js/services/userServices.js"></script>
+    <script src="../js/services/authServices.js"></script>
     <!-- <script src="../js/cartApp.directives.js"></script>
     <script src="../js/cartApp.js"></script> -->
   </head>
@@ -60,7 +64,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
             <li>
-              <a class="page-scroll" href="profile.html">My Profile</a>
+              <a class="page-scroll" ng-show="main.isLoggedIn" href="#/profile">{{ main.firstName }}</a>
             </li>
             <li>
               <a class="page-scroll" href="#/sell">Sell an Item</a>
@@ -75,7 +79,10 @@
               <a class="page-scroll" href="#/cart">Cart</a>
             </li>
             <li>
-              <a class="page-scroll" href="prelogin_home.html">Log Out</a>
+              <a class="page-scroll" ng-show="!main.isLoggedIn" href="#/login">Login</a>
+            </li>
+            <li>
+              <a class="page-scroll" ng-show="main.isLoggedIn" href="#/logout" ng-click="main.logout();">Logout</a>
             </li>
           </ul>
         </div>

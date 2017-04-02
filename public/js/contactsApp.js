@@ -48,6 +48,14 @@ angular.module("mainApp.contactsApp", ['ngRoute'])
                 console.log(response);
             });
         }
+        // this.checkContact = function(contact) {
+        //     return $http.post("/api/login", contact).
+        //     then(function(response) {
+        //         return response;
+        //     }, function(response) {
+        //         alert("Error logging in.");
+        //     });
+        // }
     })
     .controller("ListController", function(contacts, $scope) {
         console.log(contacts.data);
@@ -60,8 +68,9 @@ angular.module("mainApp.contactsApp", ['ngRoute'])
         }
 
         $scope.saveContact = function(contact) {
-            console.log(contact);
-            Contacts.createContact(contact).then(function(doc) {
+            console.log('form submitted');
+            console.log(this.contact);
+            Contacts.createContact(this.contact).then(function(doc) {
                 console.log(doc);
                 var contactUrl = "/contacts/" + doc.data._id;
                 $location.path(contactUrl);
@@ -69,7 +78,14 @@ angular.module("mainApp.contactsApp", ['ngRoute'])
                 alert(response);
             });
         }
+
+        // $scope.logIn = function(contact) {
+        //     console.log(contact.email);
+        //     Contacts.checkContact(contact);
+        //     $location.path('#/');
+        // }
     })
+
     .controller("EditContactController", function($scope, $routeParams, Contacts) {
         Contacts.getContact($routeParams.contactId).then(function(doc) {
             $scope.contact = doc.data;

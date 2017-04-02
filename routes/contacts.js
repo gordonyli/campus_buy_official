@@ -58,9 +58,9 @@ router.post("/contacts",  function(req, res) {
     var newContact = req.body;
     newContact.createDate = new Date();
 
-    if (!(req.body.firstName || req.body.lastName)) {
-        handleError(res, "Invalid user input", "Must provide a first or last name.", 400);
-    }
+    // if (!(req.body.email && req.body.password)) {
+    //     handleError(res, "Invalid user input", "Must provide an email and password.", 400);
+    // }
 
     db.collection(CONTACTS_COLLECTION).insertOne(newContact, function(err, doc) {
         if (err) {
@@ -71,16 +71,31 @@ router.post("/contacts",  function(req, res) {
     });
 });
 
+// router.get("/login", function(req, res) {
+//     var email = req.body;
+//     var password = req.body.password;
+//     console.log(email);
+//     //console.log(password);
+//     db.collection(CONTACTS_COLLECTION).findOne({'email': email, 'password': password}, function(err, doc) {
+//         if (err) {
+//             handleError(res, err.message, "Failed to login");
+//         } else {
+//             console.log("hi");
+//             res.status(200).json(doc);
+//         }
+//     });
+// });
+
 /*  "/contacts/:id"
  *    GET: find contact by id
  *    PUT: update contact by id
  *    DELETE: deletes contact by id
  */
 router.get("/contact/:id",  function(req, res) {
-    console.log("hello");
+    //console.log("hello");
     db.collection(CONTACTS_COLLECTION).findOne({ _id: new ObjectID(req.params.id) }, function(err, doc) {
         if (err) {
-            console.log("hello");
+            //console.log("hello");
             handleError(res, err.message, "Failed to get contact");
         } else {
             res.status(200).json(doc);
@@ -91,7 +106,7 @@ router.get("/contact/:id",  function(req, res) {
 router.put("/contacts/:id",  function(req, res) {
     var updateDoc = req.body;
     delete updateDoc._id;
-    console.log(req.data);
+    //console.log(req.data);
     db.collection(CONTACTS_COLLECTION).updateOne({_id: new ObjectID(req.params.id)}, updateDoc, function(err, doc) {
         if (err) {
             handleError(res, err.message, "Failed to update contact");
