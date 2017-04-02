@@ -23,7 +23,7 @@
       <tr ng-repeat="product in products | orderBy:'item'" style="cursor:pointer">
         <td><a ng-href="#/Products/product/{{product._id}}">{{product.item}}</a></td>
         <td>{{product.type}}</td>
-        <td>${{product.price}}</td>
+        <td>{{product.price}}</td>
       </tr>
     </tbody>
   </table>
