@@ -1,0 +1,133 @@
+<link href="../css/buy_item.css" rel="stylesheet">
+
+<div id="wrapper">
+    <!-- Side Navigation -->
+
+    <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+
+      <ul class="nav navbar-nav side-nav">
+        <li>
+          <h2 style="color:white; text-align:center;">
+            User ID
+          </h2>
+          <p style="color:white; text-align:center;">
+            Mark1
+          </p>
+
+        <li>
+          <p>
+        </li>
+
+      </ul>
+    </div>
+
+
+    <!-- /.navbar-collapse -->
+  </nav>
+  <div id="page-wrapper">
+    <div class="col-md-20">
+      <h2>My Market</h2>
+    </div>
+    <p>
+      <!-- <label>UserID:
+      <input id="UserID" ng-model="search.id" type="text" placeholder="111" required>
+      <span ng-hide="name.length">Please type User ID</span>
+      </label> -->
+      <label>UserID:
+      <!-- <input id="UserID" ng-model="myVar" type="text" ng-change="search.id=myVar"/> -->
+      <!-- <input id="UserID" ng-model="search.id" type="text" /> -->
+      <input id="UserID" ng-model="search.id" ng-init="search.id=userId" type="hidden" />
+      </label>
+
+    </p>
+    <div class="container-fluid">
+
+      <!-- Page Content -->
+      <div class="container">
+        <div class="container">
+          <table class="table table-hover">
+            <tbody>
+              <thead>
+                <tr>
+                  <th>Item</th>
+                  <th>Category</th>
+                  <th>Price</th>
+                  <th>Condition</th>
+                  <th>UserID</th>
+                  <th>Remove</th>
+                </tr>
+              </thead>
+              <tr data-ng-repeat="product in products | filter:search:strict">
+                <td>
+                  <a ng-href="#/products">{{ product.itemName }}</a>
+                </td>
+                <td>
+                  {{product.itemType}}
+                </td>
+                <td>
+                  {{product.itemPrice}}
+                </td>
+                <td>
+                  {{product.itemCondition}}
+                </td>
+                <td>
+                  {{product.id}}
+                </td>
+                <td>
+                  <button ng-click="deleteProduct(product._id)"> Delete </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+        <!-- Pagination -->
+      <div class="row text-center">
+          <div class="col-lg-12">
+            <ul class="pagination">
+              <li>
+                <a href="#">&laquo;</a>
+              </li>
+              <li class="active">
+                <a href="#">1</a>
+              </li>
+              <li>
+                <a href="#">2</a>
+              </li>
+              <li>
+                <a href="#">3</a>
+              </li>
+              <li>
+                <a href="#">4</a>
+              </li>
+              <li>
+                <a href="#">5</a>
+              </li>
+              <li>
+                <a href="#">&raquo;</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      <hr>
+      <footer>
+          <div class="row">
+            <div class="col-lg-12">
+              <p>Copyright &copy; CampusBuy 2016 Team Tabs, 192</p>
+            </div>
+          </div>
+        </footer>
+      </div>
+      <!-- /.container -->
+
+    </div>
+    <!-- /.container-fluid -->
+
+  </div>
+  <!-- /#page-wrapper -->
+
+</div>
+
+

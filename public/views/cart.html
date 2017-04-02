@@ -1,72 +1,51 @@
-<!DOCTYPE html>
-<html>
-<!-- <body ng-app="mainApp"> -->
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container" style="margin-top: 5%;">
     <div class="alert alert-warning" role="alert" ng-show="totalItems == 0">
         Your cart is empty
     </div>
-    <div class="table-responsive col-lg12" ng-show="totalItems > 0">
-        <table class="table table-striped">
-            <thead>
-            <tr>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th>Amount</th>
-            </tr>
-            </thead>
-            <tfoot>
-            <tr>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th>Total:</th>
-            <td>{{ totalPrice | currency }}</td>
-            </tr> 
-            </tfoot>
-            <tbody>
-            <tr ng-repeat="item in getItems track by $index">       
-                <th></th>
-                <th></th>
-                <th></th>
-                <td>
-                    <div ng-app="cartApp" ng-controller="EditCartController">
-                        
-                        <span ng-click="deleteFromCart(item._id)" class="glyphicon glyphicon-remove"></span>
-                        
+    <table id="cart" class="table table-hover table-condensed">
+        <thead>
+        <tr>
+            <th style="width:50%">Product</th>
+            <th style="width:10%">Price</th>
+            <th style="width:10%">Options</th>
+        </tr>
+        </thead>
+        <tbody style="width: 100%">
+            <tr ng-repeat="item in getItems track by $index">
+                <td data-th="Product">
+                    <div class="row">
+                        <div class="col-sm-2 hidden-xs"><img src="http://placehold.it/100x100" alt="..." class="img-responsive"/></div>
+                        <div class="col-sm-10">
+                            <h4 class="nomargin"> {{ item._name }} </h4>
+                            <p>Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet.</p>
+                        </div>
                     </div>
                 </td>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <td> {{ item._name }} </td>
-                <th></th>
-                <th></th>
-                <td> {{ item._price | currency }} </td>
+                <td data-th="Price">{{item._price | currency}}</td>
+
+                <td>
+                    <div ng-app="cartApp" ng-controller="EditCartController">
+
+                        <span ng-click="deleteFromCart(item._id)" class="fa fa-trash"></span>
+
+                    </div>
+                </td>
             </tr>
-            </tbody>
-        </table>
-    </div>
-<!-- </body> -->
-</html>
+        </tbody>
+        <tfoot>
+        <tr class="visible-xs">
+            <td class="text-center"><strong>Total 1.99</strong></td>
+        </tr>
+        <tr>
+            <td><a href="/" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
+            <td colspan="2" class="hidden-xs"></td>
+            <td class="hidden-xs text-center"><strong>Total $1.99</strong></td>
+            <td><a href="#" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
+        </tr>
+        </tfoot>
+    </table>
+</div>
     
 <style>
     span[ng-click] {

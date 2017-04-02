@@ -51,6 +51,15 @@ angular.module("mainApp", ['ngRoute', 'mainApp.contactsApp','mainApp.productsApp
                     }
                 }
             })
+            .when("/mymarket", {
+                templateUrl: "../views/mymarket.html",
+                controller: "ProductsListController",
+                resolve: {
+                    products: function(Products) {
+                        return Products.getProducts();
+                    }
+                }
+            })
             .otherwise({
                 redirectTo: "/"
             })

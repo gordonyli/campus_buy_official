@@ -114,6 +114,7 @@
             <option value="Heavily Used">Heavily Used</option>
             <option value="Bad">Bad</option>
           </select>
+          <input id="Id" class="form-control" type="hidden" ng-model="product.id" ng-init="product.id=userId" required>
           <button class="btn btn-primary nextBtn btn-lg pull-right" type="submit" ng-click="saveProduct(product)">Finish!</button>
         </div>
       </div>

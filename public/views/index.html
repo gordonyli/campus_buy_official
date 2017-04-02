@@ -78,16 +78,16 @@
               <a class="page-scroll" ng-show="main.isLoggedIn" href="#/profile">{{ main.firstName }}</a>
             </li>
             <li>
-              <a class="page-scroll" href="#/sell">Sell an Item</a>
+              <a class="page-scroll" ng-show="main.isLoggedIn" href="#/sell">Sell an Item</a>
             </li>
             <!--<li>-->
               <!--<a class="page-scroll" href="#/products">Products</a>-->
             <!--</li>-->
             <li>
-              <a class="page-scroll" href="mymarket.html">My Market</a>
+              <a class="page-scroll" ng-show="main.isLoggedIn" href="#/mymarket">My Market</a>
             </li>
             <li>
-              <a class="page-scroll" href="#/cart">Cart</a>
+              <a class="page-scroll" ng-show="main.isLoggedIn" href="#/cart">Cart</a>
             </li>
             <li>
               <a class="page-scroll" ng-show="!main.isLoggedIn" href="#/login">Login</a>

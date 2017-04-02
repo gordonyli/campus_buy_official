@@ -1,4 +1,4 @@
-angular.module("mainApp.productsApp", ['ngRoute'])
+angular.module("mainApp.productsApp", ['ngRoute', 'authServices'])
     .service("Products", function($http) {
         this.search = "";
 
@@ -49,11 +49,12 @@ angular.module("mainApp.productsApp", ['ngRoute'])
         }
 
     })
-    .controller("ProductsListController", function(products, $scope, $filter, Products, $window) {
+    .controller("ProductsListController", function(products, $scope, $filter, Products, $window, userInfo) {
         $scope.products = products.data;
         $scope.tester = "hi";
         $scope.colourIncludes = [];
         console.log($scope.products);
+        $scope.userId = userInfo.getUserId();
 
         $scope.includeColour = function(colour) {
             var i = $.inArray(colour, $scope.colourIncludes);
@@ -80,11 +81,12 @@ angular.module("mainApp.productsApp", ['ngRoute'])
         }
 
     })
-    .controller("NewProductController", function($scope, $location, Products) {
+    .controller("NewProductController", function($scope, $location, Products, userInfo) {
         console.log(Products);
         $scope.back = function() {
             $location.path("#/");
         }
+        $scope.userId = userInfo.getUserId();
 
         $scope.saveProduct = function(product) {
             console.log(product);

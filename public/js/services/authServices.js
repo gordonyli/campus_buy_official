@@ -1,15 +1,24 @@
 angular.module('authServices', [])
 
-.factory('Auth', function($http, AuthToken) {
+.service("userInfo", function() {
+	this.getUserId = function() {
+		return this.userId;
+	};
+
+	this.setUserId = function(data) {
+		this.userId = data;
+	};
+})
+
+.factory('Auth', function($http, AuthToken, userInfo) {
 	var authFactory = {};
-
-
 
 	authFactory.login = function(loginData) {
 		return $http.post('/api/authenticate', loginData).then(function(data) {
 			//console.log(data.data.token);
 			if(data.data != null) {
 				AuthToken.setToken(data.data.token);
+				userInfo.setUserId(data.data.doc.email);
 			}
 			return data;
 		});
