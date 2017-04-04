@@ -1,62 +1,63 @@
-<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-<link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+<html>
+    <head>
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+        <style>
+            span[ng-click] {
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="panel-heading">
+            <div class="panel-title text-center">
+                <h1 class="title" style="font-family: 'Oxygen', sans-serif;">My Cart</h1>
+                <hr style="width: 10%">
+            </div>
+        </div>
+        <div class="container">
+            <div class="alert alert-warning" role="alert" ng-show="totalItems == 0">
+                Your cart is empty
+            </div>
+            <table id="cart" class="table table-hover table-condensed">
+                <thead>
+                <tr>
+                    <th style="width:50%">Product</th>
+                    <th style="width:10%">Price</th>
+                    <th style="width:10%">Remove</th>
+                </tr>
+                </thead>
+                <tbody style="width: 100%">
+                    <tr ng-repeat="item in getItems track by $index">
+                        <td data-th="Product">
+                            <div class="row">
+                                <div class="col-sm-2 hidden-xs"><img src="http://placehold.it/100x100" alt="..." class="img-responsive"/></div>
+                                <div class="col-sm-10">
+                                    <h4 class="nomargin"> {{ item._name }} </h4>
+                                    <p>Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet.</p>
+                                </div>
+                            </div>
+                        </td>
+                        <td data-th="Price">{{item._price | currency}}</td>
 
-<div class="panel-heading">
-    <div class="panel-title text-center">
-        <h1 class="title" style="font-family: 'Oxygen', sans-serif;">My Cart</h1>
-        <hr style="width: 10%">
-    </div>
-</div>
+                        <td>
+                            <div ng-app="cartApp" ng-controller="EditCartController">
 
-<div class="container">
-    <div class="alert alert-warning" role="alert" ng-show="totalItems == 0">
-        Your cart is empty
-    </div>
-    <table id="cart" class="table table-hover table-condensed">
-        <thead>
-        <tr>
-            <th style="width:50%">Product</th>
-            <th style="width:10%">Price</th>
-            <th style="width:10%">Remove</th>
-        </tr>
-        </thead>
-        <tbody style="width: 100%">
-            <tr ng-repeat="item in getItems track by $index">
-                <td data-th="Product">
-                    <div class="row">
-                        <div class="col-sm-2 hidden-xs"><img src="http://placehold.it/100x100" alt="..." class="img-responsive"/></div>
-                        <div class="col-sm-10">
-                            <h4 class="nomargin"> {{ item._name }} </h4>
-                            <p>Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet.</p>
-                        </div>
-                    </div>
-                </td>
-                <td data-th="Price">{{item._price | currency}}</td>
+                                <span ng-click="deleteFromCart(item._id)" class="fa fa-trash"></span>
 
-                <td>
-                    <div ng-app="cartApp" ng-controller="EditCartController">
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
 
-                        <span ng-click="deleteFromCart(item._id)" class="fa fa-trash"></span>
+                <tr>
+                    <td><a href="/#/" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
+                    <td colspan="2" class="hidden-xs"></td>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+    </body>
+</html>
 
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-        <tfoot>
-
-        <tr>
-            <td><a href="/#/" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
-            <td colspan="2" class="hidden-xs"></td>
-        </tr>
-        </tfoot>
-    </table>
-</div>
-    
-<style>
-    span[ng-click] {
-        cursor: pointer;
-    }
-    .glyphicon.disabled {
-        color:#aaa;
-    }
-</style>  
