@@ -4,30 +4,24 @@ angular.module("mainApp", ['ngRoute', 'mainApp.contactsApp','mainApp.productsApp
     .config(function($routeProvider) {
         $routeProvider
             .when("/", {
-                templateUrl: "../views/list.html",
+                templateUrl: "../views/landing.html",
                 controller: "SearchBarController"
             })
             .when("/register", {
                 // controller: "NewContactController",
                 // templateUrl: "../views/contact-form.html"
-                templateUrl: "../views/newRegister.html",
+                templateUrl: "../views/register.html",
                 controller: 'regCtrl',
                 controllerAs: 'register'
             })
-            // .when("/contacts/:contactId", {
-            //     controller: "EditContactController",
-            //     templateUrl: "../views/contact.html"
-            // })
             .when("/profile", {
-                templateUrl: "../views/newProfile.html"
+                templateUrl: "../views/profile.html"
             })
             .when("/login", {
-                templateUrl: "../views/newLogin.html"
-                // controller: "NewContactController",
-                // templateUrl: "../views/login.html"
+                templateUrl: "../views/login.html"
             })
             .when("/logout", {
-                templateUrl: "../views/newLogout.html"
+                templateUrl: "../views/logout.html"
             })
             .when("/products", {
                 templateUrl: "../views/productsList.html",
