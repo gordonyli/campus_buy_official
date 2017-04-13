@@ -1,0 +1,43 @@
+<html>
+<head>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+    <link href="../css/item.css" rel="stylesheet">
+    <style>
+        span[ng-click] {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<input id="UserID" ng-model="search.id" ng-init="search.id=userId" type="hidden" />
+<div class="container" >
+    <div class="panel-heading">
+        <div class="panel-title text-center">
+            <hr style="width: 0%">
+        </div>
+    </div>
+    <img src="http://placehold.it/550x300" alt="..." class="img-responsive itemImage"/>
+    <div class="itemInformation">
+        <div class="itemName">{{name}}</div>
+        <div class="itemUser" ng-click="userProfileInfo()">
+            <i class="fa fa-user" aria-hidden="true"></i>
+            {{userFirst}}
+        </div>
+        <div class="itemCondition">
+            <i class="fa fa-heart" aria-hidden="true"></i>
+            {{condition}}
+        </div>
+        <div class="itemPrice">
+            <i class="fa fa-money" aria-hidden="true"></i>
+            {{price | currency}}
+        </div>
+        <div class="itemDescription">{{description}}</div>
+    </div>
+</div>
+</body>
+</html>
+
+
+
+

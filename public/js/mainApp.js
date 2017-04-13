@@ -1,4 +1,3 @@
-
 //where all routing happens
 angular.module("mainApp", ['ngRoute', 'mainApp.contactsApp','mainApp.productsApp', 'cartApp', 'userControllers', 'userServices', 'mainController', 'authServices'])
     .config(function($routeProvider) {
@@ -24,7 +23,7 @@ angular.module("mainApp", ['ngRoute', 'mainApp.contactsApp','mainApp.productsApp
                 templateUrl: "../views/logout.html"
             })
             .when("/products", {
-                templateUrl: "../views/productsList.html",
+                templateUrl: "../views/products.html",
                 controller: "ProductsListController",
                 resolve: {
                     products: function(Products) {
@@ -47,6 +46,24 @@ angular.module("mainApp", ['ngRoute', 'mainApp.contactsApp','mainApp.productsApp
             })
             .when("/mymarket", {
                 templateUrl: "../views/mymarket.html",
+                controller: "ProductsListController",
+                resolve: {
+                    products: function(Products) {
+                        return Products.getProducts();
+                    }
+                }
+            })
+            .when("/item", {
+                templateUrl: "../views/itemview.html",
+                controller: "ProductsListController",
+                resolve: {
+                    products: function(Products) {
+                        return Products.getProducts();
+                    }
+                }
+            })
+            .when("/seller", {
+                templateUrl: "../views/sellerProfile.html",
                 controller: "ProductsListController",
                 resolve: {
                     products: function(Products) {

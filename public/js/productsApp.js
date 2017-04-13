@@ -1,16 +1,15 @@
 angular.module("mainApp.productsApp", ['ngRoute', 'authServices'])
     .service("Products", function($http) {
         this.search = "";
-
+        this.currentName = "";
         this.setSearch = function(data) {
             this.search = data;
         }
         this.getSearch = function() {
             return this.search;
         }
-
         this.getProducts = function() {
-            console.log("search: " + this.getSearch());
+            // console.log("search: " + this.getSearch());
             var query = this.getSearch();
             return $http.get("/api/products").
             then(function(response) {
@@ -47,14 +46,33 @@ angular.module("mainApp.productsApp", ['ngRoute', 'authServices'])
                 console.log(response);
             });
         }
+        this.getProduct = function(productId) {
+            var url = "/api/product/" + productId;
+            return $http.get(url).
+            then(function(response) {
+                this.currentName = response.data.itemName;
+                console.log(currentName);
+                return response;
+            }, function(response) {
+                // console.log(response);
+            })
+        }
 
     })
-    .controller("ProductsListController", function(products, $scope, $filter, Products, $window, userInfo) {
+    .controller("ProductsListController", function(products, $scope, $filter, Products, $window, $location, userInfo) {
         $scope.products = products.data;
         $scope.tester = "hi";
         $scope.colourIncludes = [];
-        console.log($scope.products);
+        // console.log($scope.products);
         $scope.userId = userInfo.getUserId();
+        $scope.name = localStorage.getItem("name");
+        $scope.condition = localStorage.getItem("condition");
+        $scope.price = localStorage.getItem("price");
+        $scope.description = localStorage.getItem("description");
+        $scope.userFirst = localStorage.getItem("first");
+        $scope.userLast = localStorage.getItem("last");
+        $scope.userEmail = localStorage.getItem("email");
+        $scope.userPhone = localStorage.getItem("phone");
 
         $scope.includeColour = function(colour) {
             var i = $.inArray(colour, $scope.colourIncludes);
@@ -78,6 +96,25 @@ angular.module("mainApp.productsApp", ['ngRoute', 'authServices'])
         $scope.deleteProduct = function(productId) {
             Products.deleteProduct(productId);
             $window.location.reload();
+        }
+        $scope.itemDescription = function(productId) {
+            Products.getProduct(productId).then(function(res) {
+                localStorage.setItem("name", res.data.itemName);
+                localStorage.setItem("condition", res.data.itemCondition);
+                localStorage.setItem("price", res.data.itemPrice);
+                localStorage.setItem("description", res.data.itemDescription);
+                localStorage.setItem("first", res.data.userFirstName);
+                localStorage.setItem("last", res.data.userLastName);
+                localStorage.setItem("email", res.data.userEmail);
+                localStorage.setItem("phone", res.data.userPhone);
+
+                $location.path("/item");
+            });
+        }
+        $scope.userProfileInfo = function() {
+            $location.path("/seller");
+            console.log($scope.userFirst);
+
         }
 
     })

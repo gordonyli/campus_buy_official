@@ -133,7 +133,7 @@
                   <th>Add to Cart</th>
                 </tr>
               </thead>
-              <tr data-ng-repeat="product in products | filter:colourFilter" style="color: black !important;">
+              <tr data-ng-repeat="product in products | filter:colourFilter" ng-click="itemDescription(product._id)" style="color: black !important;">
                 <td>
                   <a ng-href="#/products">{{ product.itemName }}</a>
                 </td>

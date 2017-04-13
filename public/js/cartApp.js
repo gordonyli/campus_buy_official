@@ -36,7 +36,7 @@ angular.module("cartApp", ['ngRoute'])
 		}
 
 		this.removeItemById = function(productId) {
-			var url = "/api/cart/" + productId;
+				var url = "/api/cart/" + productId;
 			return $http.delete(url).
 			then(function(response){
 				return response;

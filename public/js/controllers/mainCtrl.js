@@ -2,11 +2,8 @@ angular.module('mainController', ['authServices'])
 
 .controller('mainCtrl', function(Auth, $location, $timeout, $rootScope) {
 	var app = this;
-
 	app.loadme = false;
-
 	$rootScope.$on('$routeChangeStart', function() {
-
 		if (Auth.isLoggedIn()) {
 			app.isLoggedIn = true;
 			Auth.getUser().then(function(data) {

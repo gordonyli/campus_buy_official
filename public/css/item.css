@@ -1,0 +1,32 @@
+body {
+    font-family: Oxygen;
+}
+.itemImage {
+    display: inline-block;
+    width: 50%;
+}
+
+.itemInformation {
+    display: inline-block;
+    margin-left: 10%;
+    width: 30%;
+}
+
+.itemName {
+    font-size: 4em;
+}
+
+.itemCondition {
+}
+
+.itemPrice {
+}
+
+.itemDescription {
+    margin-top: 10%;
+}
+
+.fa {
+    margin-right: 5%;
+    font-size: 2em;
+}
