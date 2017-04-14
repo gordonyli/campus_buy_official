@@ -125,7 +125,9 @@ angular.module("mainApp.productsApp", ['ngRoute', 'authServices'])
         }
         $scope.userId = userInfo.getUserId();
 
+        $scope.userCart = "";
         $scope.saveProduct = function(product) {
+
             console.log(product);
             Products.createProduct(product).then(function(doc) {
                 console.log("this right here" + doc);

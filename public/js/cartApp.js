@@ -1,7 +1,7 @@
 angular.module("cartApp", ['ngRoute'])
 	.service("Cart", function($http, ngCartItem) {
 		this.addItem = function(product) {
-			var newCart = new ngCartItem(product._id, product.itemName, product.itemPrice);
+			var newCart = new ngCartItem(product._id, product.itemName, product.itemPrice, product.userCart, product.itemDescription);
 			return $http.post("/api/new/cart", newCart).
 			then(function(response){
 				return response;
@@ -46,7 +46,10 @@ angular.module("cartApp", ['ngRoute'])
 		};
 	})
 	.controller("EditCartController", function($scope, Cart, $window, $location) {
-		$scope.saveToCart = function(product) {
+		$scope.saveToCart = function(product, cartUser) {
+			console.log(cartUser);
+			product.userCart = cartUser;
+			console.log(product.userCart);
 			Cart.addItem(product).then(function(doc) {
 				var cartProductUrl = "/cart/" + doc.data._id;
 				$location.path(cartProductUrl);
@@ -62,6 +65,7 @@ angular.module("cartApp", ['ngRoute'])
 	})
 
 	.controller("CartListController", function(cart, $scope, Cart, $window) {
+		
 		$scope.getItems = cart.data;
 		$scope.totalItems = Cart.getTotalItems(cart.data);
 		$scope.totalPrice = Cart.totalCost(cart.data);
@@ -69,10 +73,12 @@ angular.module("cartApp", ['ngRoute'])
 
 	.factory('ngCartItem', ['$rootScope', '$log', function($rootScope, $log) {
 
-		var item = function(id, name, price) {
+		var item = function(id, name, price, user, description) {
 			this.setId(id);
 			this.setName(name);
 			this.setPrice(price);
+			this.setUser(user);
+			this.setDescription(description);
 		};
 
 		item.prototype.setId = function(id) {
@@ -85,6 +91,14 @@ angular.module("cartApp", ['ngRoute'])
 
 		item.prototype.getId = function() {
 			return this._id;
+		};
+
+		item.prototype.setDescription = function(description) {
+			this._description = description;
+		};
+
+		item.prototype.getDescription = function() {
+			return this._description;
 		};
 
 		item.prototype.setName = function(name) {
@@ -116,11 +130,21 @@ angular.module("cartApp", ['ngRoute'])
 			return this._price;
 		};
 
+		item.prototype.setUser = function(user) {
+			this._user = user;
+		};
+
+		item.prototype.getUser = function() {
+			return this._user;
+		};
+
 		item.prototype.toObject = function() {
 			return {
 				id: this.getId(),
 				name: this.getName(),
 				price: this.getPrice(),
+				user: this.getUser(),
+				description: this.getDescription(),
 			}
 		};
 
