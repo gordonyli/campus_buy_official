@@ -135,10 +135,10 @@
               </thead>
               <tr data-ng-repeat="product in products | filter:colourFilter" ng-click="itemDescription(product._id)" style="color: black !important;">
                 <td>
-                  <a ng-href="#/products">{{ product.itemName }}</a>
+                  {{ product.itemName }}
                 </td>
                 <td>
-                  {{product.itemPrice}}
+                  {{product.itemPrice | currency}}
                 </td>
                 <td>
                   {{product.itemCondition}}

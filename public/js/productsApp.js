@@ -95,7 +95,7 @@ angular.module("mainApp.productsApp", ['ngRoute', 'authServices'])
         }
         $scope.deleteProduct = function(productId) {
             Products.deleteProduct(productId);
-            $window.location.reload();
+            $location.path("/");
         }
         $scope.itemDescription = function(productId) {
             Products.getProduct(productId).then(function(res) {
@@ -107,7 +107,6 @@ angular.module("mainApp.productsApp", ['ngRoute', 'authServices'])
                 localStorage.setItem("last", res.data.userLastName);
                 localStorage.setItem("email", res.data.userEmail);
                 localStorage.setItem("phone", res.data.userPhone);
-
                 $location.path("/item");
             });
         }
