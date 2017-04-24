@@ -1,7 +1,7 @@
 # CampusBuy
--
+
 ### Release Notes for CampusBuy v1.0.0
--
+
 #### New Features for this Release 
 
 * Recreated the Sell Form to be more intuitive
@@ -34,7 +34,7 @@
 * Product page still includes filter by Seller Rating
 
 ### Installation Guide for CampusBuy v1.0.0
--
+
 #### Prerequisites  
 CampusBuy is a website (web-based application) that is currently running on a heroku web-hosting service. It requires any web browser so Google Chrome, Mozilla Firefox, and Safari will run it. To simply access the website, navigate in your preferred web browser to www.campusbuy.herokuapp.com
 
@@ -61,12 +61,6 @@ No build necessary for this app.
 
 ### Miscellaneous Notes (from previous iterations)
 
-
-
-
-
-
--
 #### Setup
 
 1. Download heroku client from the heroku website (https://devcenter.heroku.com/articles/heroku-cli#download-and-install)
